@@ -1,10 +1,9 @@
 /* ========================================
-   CSS — Compta Clair (PBN expertise comptable)
-   Direction artistique : cf. CAHIER-DES-CHARGES.md
+   CSS — Compta Clair
    ======================================== */
 
 :root {
-    /* COULEURS — palette CAHIER-DES-CHARGES.md */
+    /* COULEURS */
     --primary: #12433F;
     --primary-light: #E6F2EF;
     --primary-dark: #0B2F2C;
@@ -1327,7 +1326,7 @@ mark.highlight {
     min-width: 0;
 }
 
-/* Table of Contents — meme DA que le bloc "L'article en bref" : fond pastel menthe,
+/* Sommaire — meme DA que le bloc "L'article en bref" : fond pastel menthe,
    arrondi 16 px, puces vertes sur le cote, typo Plus Jakarta Sans. */
 .toc {
     background-color: var(--primary-light);
