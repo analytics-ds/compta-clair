@@ -1,3 +1,8 @@
+# Crawl autorise VOLONTAIREMENT : le blocage d'indexation passe par la balise
+# <meta name="robots" content="noindex, nofollow"> de chaque page (params.noindex dans
+# hugo.toml). Un Disallow ici empecherait les moteurs de lire cette balise, et l'URL
+# pourrait etre indexee malgre tout.
+# A revoir le jour du passage sur le domaine definitif : params.noindex = false.
 User-agent: *
 Allow: /
 
