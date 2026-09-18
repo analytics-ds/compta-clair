@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://analytics-ds.github.io/compta-clair/sitemap.xml

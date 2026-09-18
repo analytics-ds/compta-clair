@@ -1,0 +1,30 @@
+# Compta Clair
+
+> Compta Clair explique la comptabilité, la fiscalité et la création d'entreprise en clair : guides pratiques, sourcés, à jour, pour dirigeants de TPE, indépendants et particuliers.
+
+## À propos
+
+Compta Clair est un média indépendant. Chaque article s'appuie sur des sources officielles (service-public.fr, impots.gouv.fr, BOFiP, URSSAF, Légifrance, INSEE, Bpifrance Création) et affiche sa date de dernière mise à jour.
+
+## Contenu principal
+
+- Créer son entreprise (Kbis, ACRE, business plan)
+- Statuts juridiques (SAS, SASU, SARL, EURL, holding)
+- Micro-entreprise (auto-entrepreneur)
+- Comptabilité (facturation électronique, plan comptable, bilan)
+- Fiscalité de l'entreprise (CFE, BIC, TVA, IS)
+- Paie et social (SMIC, rupture conventionnelle, fiche de paie, dividendes)
+- Gérer son entreprise (trésorerie, note de frais, facturation)
+- Fiscalité des particuliers (SCI, LMNP, impôt sur le revenu, plus-value immobilière)
+- Expert-comptable et métiers (profession libérale, professions réglementées)
+
+## Articles récents
+
+Voir /blog/ pour la liste à jour des articles.
+
+## Informations techniques
+
+- Générateur : Hugo
+- Hébergement : GitHub Pages
+- Sitemap : https://analytics-ds.github.io/compta-clair/sitemap.xml
+- RSS : https://analytics-ds.github.io/compta-clair/index.xml
