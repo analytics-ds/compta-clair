@@ -1,0 +1,102 @@
+{{/* .Site.Language.Lang non fiable sur ce site (voir header.html) */}}
+{{ $lang := "fr" }}
+{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+<!DOCTYPE html>
+<html lang="{{ $lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ if .IsHome }}{{ .Site.Title }} — {{ if eq $lang "en" }}Accounting and business explained clearly{{ else }}La compta et la fiscalité expliquées simplement{{ end }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+
+    {{ partial "seo-head.html" . }}
+
+    <!-- Google Fonts (non-blocking via media swap) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Source+Serif+4:wght@400&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" data-media="all">
+    <script>document.querySelectorAll('link[data-media]').forEach(function(l){l.addEventListener('load',function(){l.media=l.dataset.media})});</script>
+
+    {{ $css := resources.Get "css/main.css" }}
+    {{ if $css }}
+        <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+    {{ end }}
+
+    <link rel="stylesheet" href="{{ "pagefind/pagefind-ui.css" | relURL }}">
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">{{ if eq $lang "en" }}Skip to content{{ else }}Aller au contenu{{ end }}</a>
+
+    {{ partial "header.html" . }}
+
+    <main id="main-content">
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    {{ partial "footer.html" . }}
+
+    <!-- Modale de recherche Pagefind -->
+    <div id="search-modal" role="dialog" aria-modal="true" aria-label="{{ if eq $lang "en" }}Search{{ else }}Recherche{{ end }}">
+        <div id="search-modal-inner">
+            <div id="search-modal-close">
+                <button type="button" id="search-modal-close-btn">{{ if eq $lang "en" }}Close ✕{{ else }}Fermer ✕{{ end }}</button>
+            </div>
+            <div id="pagefind-search"></div>
+        </div>
+    </div>
+    <script src="{{ "pagefind/pagefind-ui.js" | relURL }}"></script>
+    <script>
+    (function() {
+        var modal = document.getElementById('search-modal');
+        var closeBtn = document.getElementById('search-modal-close-btn');
+        var pfMounted = false;
+
+        function mountPagefind() {
+            if (pfMounted || typeof PagefindUI === 'undefined') return;
+            new PagefindUI({
+                element: "#pagefind-search",
+                showSubResults: true,
+                showImages: false,
+                bundlePath: "{{ "pagefind/" | relURL }}"
+            });
+            pfMounted = true;
+        }
+
+        function openSearch(prefill) {
+            modal.classList.add('open');
+            mountPagefind();
+            if (prefill) {
+                setTimeout(function() {
+                    var input = modal.querySelector('input[type="text"]');
+                    if (input) {
+                        input.value = prefill;
+                        input.dispatchEvent(new Event('input', { bubbles: true }));
+                        input.focus();
+                    }
+                }, 150);
+            }
+        }
+
+        function closeSearch() {
+            modal.classList.remove('open');
+        }
+
+        document.querySelectorAll('[data-search-trigger]').forEach(function(form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var input = form.querySelector('input[type="search"]');
+                openSearch(input ? input.value : '');
+            });
+        });
+
+        document.querySelectorAll('[data-search-open]').forEach(function(btn) {
+            btn.addEventListener('click', function() { openSearch(''); });
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', closeSearch);
+        modal.addEventListener('click', function(e) { if (e.target === modal) closeSearch(); });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSearch(); });
+    })();
+    </script>
+</body>
+</html>

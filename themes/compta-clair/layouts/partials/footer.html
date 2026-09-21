@@ -1,0 +1,52 @@
+{{/* .Site.Language.Lang n'est pas fiable dans un partial sur ce site (voir header.html) */}}
+{{ $lang := "fr" }}
+{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+{{ $prefix := "" }}
+{{ if eq $lang "en" }}{{ $prefix = "/en" }}{{ end }}
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Compta Clair</h4>
+                {{/* .Site.Params.description n'est pas fiable dans un partial sur ce site (voir header.html) */}}
+                <p>{{ if eq $lang "en" }}Compta Clair explains French accounting, taxation and business creation in plain language: practical, sourced, up-to-date guides for small business owners, freelancers and individuals.{{ else }}Compta Clair explique la comptabilité, la fiscalité et la création d'entreprise en clair : guides pratiques, sourcés, à jour, pour dirigeants de TPE, indépendants et particuliers.{{ end }}</p>
+            </div>
+            <div class="footer-col">
+                <h4>{{ if eq $lang "en" }}Topics{{ else }}Catégories{{ end }}</h4>
+                <ul>
+                    {{ range .Site.Data.categories }}
+                    {{ $slug := cond (eq $lang "en") .slug_en .slug_fr }}
+                    {{ $title := cond (eq $lang "en") .title_en .title_fr }}
+                    {{ $url := printf "%scategories/%s/" (cond (eq $lang "en") "/en/" "/") $slug }}
+                    <li><a href="{{ $url | relURL }}">{{ $title }}</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>{{ if eq $lang "en" }}About{{ else }}En savoir plus{{ end }}</h4>
+                <nav aria-label="Footer navigation">
+                    <ul>
+                        {{ if eq $lang "en" }}
+                        <li><a href="{{ (printf "%s/about-us/" $prefix) | relURL }}">About us</a></li>
+                        <li><a href="{{ (printf "%s/authors/" $prefix) | relURL }}">Authors</a></li>
+                        <li><a href="{{ (printf "%s/editorial-policy/" $prefix) | relURL }}">Editorial policy</a></li>
+                        <li><a href="{{ (printf "%s/contact/" $prefix) | relURL }}">Contact</a></li>
+                        <li><a href="{{ (printf "%s/legal-notice/" $prefix) | relURL }}">Legal notice</a></li>
+                        <li><a href="{{ (printf "%s/sitemap/" $prefix) | relURL }}">Sitemap</a></li>
+                        {{ else }}
+                        <li><a href="{{ "qui-sommes-nous/" | relURL }}">Qui sommes-nous</a></li>
+                        <li><a href="{{ "auteurs/" | relURL }}">Auteurs</a></li>
+                        <li><a href="{{ "charte-editoriale/" | relURL }}">Charte éditoriale</a></li>
+                        <li><a href="{{ "contact/" | relURL }}">Contact</a></li>
+                        <li><a href="{{ "mentions-legales/" | relURL }}">Mentions légales</a></li>
+                        <li><a href="{{ "plan-du-site/" | relURL }}">Plan du site</a></li>
+                        {{ end }}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {{ now.Year }} {{ .Site.Title }}. {{ if eq $lang "en" }}All rights reserved.{{ else }}Tous droits réservés.{{ end }}</p>
+        </div>
+    </div>
+</footer>

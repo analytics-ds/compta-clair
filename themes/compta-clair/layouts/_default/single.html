@@ -1,0 +1,291 @@
+{{ define "main" }}
+{{/* .Site.Language.Lang non fiable sur ce site (voir header.html) */}}
+{{ $lang := "fr" }}
+{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+{{ $authorsPage := cond (eq $lang "en") "authors/" "auteurs/" }}
+<article class="single-article">
+    <div class="container">
+
+        <!-- Fil d'Ariane -->
+        <nav class="breadcrumb" aria-label="{{ if eq $lang "en" }}Breadcrumb{{ else }}Fil d'Ariane{{ end }}">
+            <ol class="breadcrumb-list">
+                <li class="breadcrumb-item">
+                    <a href="{{ (cond (eq $lang "en") "/en/" "/") | relURL }}">{{ if eq $lang "en" }}Home{{ else }}Accueil{{ end }}</a>
+                    <svg class="breadcrumb-sep" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 4 10 8 6 12" /></svg>
+                </li>
+                {{ $catURL := partial "category-url.html" (dict "page" . "lang" $lang) }}
+                {{ if $catURL }}
+                <li class="breadcrumb-item">
+                    <a href="{{ $catURL }}">{{ index .Params.categories 0 }}</a>
+                    <svg class="breadcrumb-sep" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 4 10 8 6 12" /></svg>
+                </li>
+                {{ end }}
+                <li class="breadcrumb-item">
+                    <span aria-current="page">{{ .Title }}</span>
+                </li>
+            </ol>
+        </nav>
+
+        <!-- Hero article -->
+        <div class="article-hero">
+            <div class="article-hero-text">
+                <div class="article-meta">
+                    {{ $catURL := partial "category-url.html" (dict "page" . "lang" $lang) }}
+                    {{ if $catURL }}
+                    <a href="{{ $catURL }}" class="article-category"><span class="category-dot" style="background-color: var(--accent);"></span>{{ index .Params.categories 0 }}</a>
+                    {{ end }}
+                    <span class="meta-separator">·</span>
+                    <span class="article-reading-time">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        {{ .ReadingTime }} {{ if eq $lang "en" }}min read{{ else }}min de lecture{{ end }}
+                    </span>
+                    <span class="meta-separator">·</span>
+                    <span class="article-updated">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                        {{ if eq $lang "en" }}Updated on {{ .Lastmod.Format "2 January 2006" }}{{ else }}Mis à jour le {{ .Lastmod.Format "2 January 2006" }}{{ end }}
+                    </span>
+                </div>
+
+                <h1 class="article-title">{{ .Title }}</h1>
+                {{ with .Description }}
+                <p class="article-description">{{ . }}</p>
+                {{ end }}
+
+                {{ $authorData := dict }}
+                {{ with .Params.author }}
+                    {{ $authorData = index $.Site.Data.authors . }}
+                {{ end }}
+                <div class="article-author-bar">
+                    {{ with $authorData }}
+                    <a href="{{ printf "%s%s/" $authorsPage .id | relURL }}" class="author-info author-link">
+                        {{ with .avatar }}
+                        <img src="{{ . | relURL }}" alt="{{ $authorData.name }}" class="author-avatar" width="48" height="48" loading="lazy">
+                        {{ else }}
+                        <div class="author-avatar author-avatar-placeholder" aria-hidden="true">{{ slicestr .name 0 1 }}</div>
+                        {{ end }}
+                        <div class="author-text">
+                            <span class="author-name">{{ if eq $lang "en" }}By {{ .name }}{{ else }}Par {{ .name }}{{ end }}</span>
+                            {{ with index .role $lang }}
+                            <span class="author-role">{{ . }}</span>
+                            {{ end }}
+                        </div>
+                    </a>
+                    {{ end }}
+                </div>
+
+                <div class="article-tags">
+                    {{ range .Params.tags }}
+                    <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag">#{{ . }}</a>
+                    {{ end }}
+                </div>
+            </div>
+
+            {{ with .Params.image }}
+            <div class="article-hero-image">
+                <img src="{{ . | relURL }}" alt="{{ with $.Params.imageAlt }}{{ . }}{{ else }}{{ $.Title }}{{ end }}" width="600" height="400" loading="eager" fetchpriority="high">
+                {{ with $.Params.imageCredit }}
+                <small class="article-hero-image-credit">{{ . }}</small>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+
+        <!-- Layout 2 colonnes -->
+        <div class="article-layout">
+
+            {{ $headings := .TableOfContents }}
+            {{ if $headings }}
+            <aside class="article-sidebar">
+                <button type="button" class="toc-mobile-toggle">{{ if eq $lang "en" }}Show table of contents{{ else }}Afficher le sommaire{{ end }}</button>
+                <nav class="toc" aria-label="{{ if eq $lang "en" }}Table of contents{{ else }}Sommaire{{ end }}">
+                    <div class="toc-title">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="15" y2="12" /><line x1="3" y1="18" x2="18" y2="18" /></svg>
+                        {{ if eq $lang "en" }}Table of contents{{ else }}Sommaire{{ end }}
+                    </div>
+                    {{ .TableOfContents }}
+                    <button type="button" class="toc-more">{{ if eq $lang "en" }}Show more{{ else }}Afficher plus{{ end }}</button>
+                </nav>
+            </aside>
+            {{ end }}
+
+            <div class="article-main">
+                <div class="prose article-content">
+                    {{ .Content }}
+                </div>
+
+                <!-- Bloc Sources -->
+                {{ with .Params.sources }}
+                <div class="sources-box">
+                    <p class="sources-box-title">{{ if eq $lang "en" }}Sources{{ else }}Sources{{ end }}</p>
+                    <ol class="sources-list">
+                        {{ range . }}
+                        <li>
+                            <span class="source-org">{{ .organisme }}</span> —
+                            <span class="source-title">{{ .titre }}</span>
+                            {{ if eq $lang "en" }}(accessed {{ .consulte }}){{ else }}(consulté le {{ .consulte }}){{ end }}
+                        </li>
+                        {{ end }}
+                    </ol>
+                </div>
+                {{ end }}
+
+                <!-- Tags -->
+                <div class="article-tags-bottom">
+                    {{ range .Params.tags }}
+                    <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag">#{{ . }}</a>
+                    {{ end }}
+                </div>
+
+                <!-- Bloc auteur -->
+                {{ with $authorData }}
+                <aside class="author-box" aria-label="{{ if eq $lang "en" }}About the author{{ else }}À propos de l'auteur{{ end }}">
+                    {{ with .avatar }}
+                    <img src="{{ . | relURL }}" alt="{{ $authorData.name }}" class="author-box-avatar" width="96" height="96" loading="lazy">
+                    {{ else }}
+                    <div class="author-box-avatar author-avatar-placeholder" aria-hidden="true">{{ slicestr .name 0 1 }}</div>
+                    {{ end }}
+                    <div class="author-box-content">
+                        <span class="author-box-label">{{ if eq $lang "en" }}About the author{{ else }}À propos de l'auteur{{ end }}</span>
+                        <h3 class="author-box-name"><a href="{{ printf "%s%s/" $authorsPage .id | relURL }}">{{ .name }}</a></h3>
+                        {{ with index .role $lang }}
+                        <span class="author-box-role">{{ . }}</span>
+                        {{ end }}
+                        {{ with index .bio $lang }}
+                        <p class="author-box-bio">{{ . }}</p>
+                        {{ end }}
+                        {{ with .expertise }}
+                        <div class="author-box-expertise">
+                            <span class="author-box-expertise-label">{{ if eq $lang "en" }}Expertise:{{ else }}Expertise :{{ end }}</span>
+                            {{ range $i, $e := . }}{{ if $i }}, {{ end }}<span class="author-box-expertise-item">{{ $e }}</span>{{ end }}
+                        </div>
+                        {{ end }}
+                        <a href="{{ printf "%s%s/" $authorsPage .id | relURL }}" class="author-box-link">{{ if eq $lang "en" }}View all articles →{{ else }}Voir tous ses articles →{{ end }}</a>
+                    </div>
+                </aside>
+                {{ end }}
+
+                <!-- Articles similaires -->
+                {{/* .Related peut renvoyer un objet dont .Language.Lang est errone (bug constate
+                     sur ce site), on filtre donc sur le prefixe d'URL reel plutot que sur .Language */}}
+                {{ $relatedAll := .Site.RegularPages.Related . }}
+                {{ $related := slice }}
+                {{ range $relatedAll }}
+                    {{ $isEN := strings.HasPrefix .RelPermalink "/en/" }}
+                    {{ if or (and (eq $lang "en") $isEN) (and (ne $lang "en") (not $isEN)) }}
+                        {{ $related = $related | append . }}
+                    {{ end }}
+                {{ end }}
+                {{ $related = $related | first 3 }}
+                {{ if $related }}
+                <aside class="related-articles">
+                    <h2 class="related-title">{{ if eq $lang "en" }}Related articles{{ else }}Articles similaires{{ end }}</h2>
+                    <div class="related-grid">
+                        {{ range $related }}
+                        <a href="{{ .RelPermalink }}" class="related-card">
+                            {{ with .Params.categories }}
+                            <span class="related-category">{{ index . 0 }}</span>
+                            {{ end }}
+                            <h3>{{ .Title }}</h3>
+                            <p>{{ .Description }}</p>
+                        </a>
+                        {{ end }}
+                    </div>
+                </aside>
+                {{ end }}
+
+                {{ partial "category-quiz.html" . }}
+
+                <!-- Navigation prev/next -->
+                <nav class="article-footer" aria-label="{{ if eq $lang "en" }}Article navigation{{ else }}Navigation articles{{ end }}">
+                    <div class="article-nav">
+                        {{ with .PrevInSection }}
+                        <a href="{{ .RelPermalink }}" class="nav-prev">
+                            <span class="nav-label">{{ if eq $lang "en" }}Previous article{{ else }}Article précédent{{ end }}</span>
+                            <span class="nav-title">{{ .Title }}</span>
+                        </a>
+                        {{ end }}
+                        {{ with .NextInSection }}
+                        <a href="{{ .RelPermalink }}" class="nav-next">
+                            <span class="nav-label">{{ if eq $lang "en" }}Next article{{ else }}Article suivant{{ end }}</span>
+                            <span class="nav-title">{{ .Title }}</span>
+                        </a>
+                        {{ end }}
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+</article>
+
+<script>
+(function() {
+    // TOC actif au scroll
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                document.querySelectorAll('.toc a').forEach(function(a) { a.classList.remove('toc-active'); });
+                var link = document.querySelector('.toc a[href="#' + entry.target.id + '"]');
+                if (link) link.classList.add('toc-active');
+            }
+        });
+    }, { rootMargin: '-80px 0px -60% 0px', threshold: 0 });
+    document.querySelectorAll('.article-content h2, .article-content h3').forEach(function(h) { observer.observe(h); });
+
+    // Sommaire : "Afficher plus" au dela de 6 entrees
+    var tocNav = document.querySelector('.toc nav');
+    var tocMore = document.querySelector('.toc-more');
+    var tocBox = document.querySelector('.toc');
+    if (tocNav && tocMore && tocBox) {
+        var items = tocNav.querySelectorAll('ul > li, ol > li');
+        if (items.length > 6) {
+            tocMore.classList.add('visible');
+            tocMore.addEventListener('click', function() {
+                var expanded = tocBox.classList.toggle('toc-expanded');
+                tocMore.textContent = expanded
+                    ? {{ if eq $lang "en" }}'Show less'{{ else }}'Réduire'{{ end }}
+                    : {{ if eq $lang "en" }}'Show more'{{ else }}'Afficher plus'{{ end }};
+            });
+        }
+    }
+
+    // Sommaire replie en mobile
+    var toggle = document.querySelector('.toc-mobile-toggle');
+    var sidebar = document.querySelector('.article-sidebar');
+    if (toggle && sidebar) {
+        toggle.addEventListener('click', function() {
+            var open = sidebar.classList.toggle('toc-open');
+            toggle.textContent = open
+                ? {{ if eq $lang "en" }}'Hide table of contents'{{ else }}'Masquer le sommaire'{{ end }}
+                : {{ if eq $lang "en" }}'Show table of contents'{{ else }}'Afficher le sommaire'{{ end }};
+        });
+    }
+
+    // Boutons "copier le lien" sur les H2
+    document.querySelectorAll('.article-content h2[id]').forEach(function(h2) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'h2-copy-link';
+        btn.setAttribute('aria-label', {{ if eq $lang "en" }}'Copy link to this section'{{ else }}'Copier le lien de cette section'{{ end }});
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
+        btn.addEventListener('click', function() {
+            var url = window.location.origin + window.location.pathname + '#' + h2.id;
+            navigator.clipboard.writeText(url).then(function() {
+                btn.classList.add('copied');
+                setTimeout(function() { btn.classList.remove('copied'); }, 1500);
+            });
+        });
+        h2.appendChild(btn);
+    });
+
+    // Tableaux : wrapper scrollable en mobile
+    document.querySelectorAll('.article-content table').forEach(function(table) {
+        var wrapper = document.createElement('div');
+        wrapper.className = 'table-wrapper';
+        table.parentNode.insertBefore(wrapper, table);
+        wrapper.appendChild(table);
+    });
+})();
+</script>
+
+{{ end }}

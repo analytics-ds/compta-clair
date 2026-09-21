@@ -1,0 +1,61 @@
+# Registre statique des articles du blog (une entree par paire FR/EN).
+# Source unique deterministe pour les listes d'articles par categorie/auteur/accueil : sur ce site,
+# .Site.RegularPages, .Site.Sections et .Site.GetPage renvoient systematiquement le contenu FR
+# quelle que soit la langue de la page appelante (.Section/.Type valent "en" au lieu du vrai nom de
+# section pour toute page EN — bug constate, voir MEMORY.md). On resout donc chaque article
+# explicitement via .Site.GetPage "blog/<slug>" ou "en/blog/<slug>", methode fiable constatee
+# (deja utilisee par partials/category-url.html).
+- slug_fr: kbis-creation-entreprise
+  slug_en: company-registration-kbis
+  category_slug_fr: creer-son-entreprise
+  category_slug_en: starting-a-business
+  author: camille-renaud
+  featured: true
+- slug_fr: choisir-statut-juridique-sas-sarl
+  slug_en: choosing-sas-sarl-legal-structure
+  category_slug_fr: statuts-juridiques
+  category_slug_en: legal-structures
+  author: camille-renaud
+  featured: false
+- slug_fr: seuils-auto-entrepreneur-2026
+  slug_en: auto-entrepreneur-thresholds-2026
+  category_slug_fr: micro-entreprise
+  category_slug_en: micro-business
+  author: camille-renaud
+  featured: true
+- slug_fr: facturation-electronique-obligatoire
+  slug_en: mandatory-e-invoicing-france
+  category_slug_fr: comptabilite
+  category_slug_en: accounting
+  author: julien-marchal
+  featured: false
+- slug_fr: cfe-cotisation-fonciere-entreprises
+  slug_en: cfe-local-business-tax-france
+  category_slug_fr: fiscalite-de-lentreprise
+  category_slug_en: business-taxation
+  author: julien-marchal
+  featured: true
+- slug_fr: lire-fiche-de-paie
+  slug_en: how-to-read-french-payslip
+  category_slug_fr: paie-et-social
+  category_slug_en: payroll-and-social-charges
+  author: nadia-benali
+  featured: false
+- slug_fr: gerer-tresorerie-tpe
+  slug_en: managing-cash-flow-small-business
+  category_slug_fr: gerer-son-entreprise
+  category_slug_en: running-a-business
+  author: julien-marchal
+  featured: true
+- slug_fr: sci-lmnp-immobilier-locatif
+  slug_en: sci-lmnp-rental-property-taxation
+  category_slug_fr: fiscalite-des-particuliers
+  category_slug_en: personal-taxation
+  author: antoine-leclerc
+  featured: false
+- slug_fr: role-expert-comptable-professions-liberales
+  slug_en: role-of-chartered-accountant-professions
+  category_slug_fr: expert-comptable-et-metiers
+  category_slug_en: accountants-and-professions
+  author: nadia-benali
+  featured: false

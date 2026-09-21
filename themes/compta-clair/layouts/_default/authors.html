@@ -1,0 +1,42 @@
+{{ define "main" }}
+{{/* .Site.Language.Lang non fiable sur ce site (voir header.html) */}}
+{{ $lang := "fr" }}
+{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+{{ $authorsPage := cond (eq $lang "en") "authors/" "auteurs/" }}
+{{/* .Site.RegularPages/.Site.GetPage("blog") sont peu fiables en langue non par defaut sur ce
+     site : on reconstitue $blogPages depuis le registre statique data/articles.yaml. */}}
+{{ $blogPages := slice }}
+{{ range .Site.Data.articles }}
+    {{ $artSlug := cond (eq $lang "en") .slug_en .slug_fr }}
+    {{ $artPath := cond (eq $lang "en") (printf "en/blog/%s" $artSlug) (printf "blog/%s" $artSlug) }}
+    {{ with $.Site.GetPage $artPath }}{{ $blogPages = $blogPages | append . }}{{ end }}
+{{ end }}
+
+<section class="list-header">
+    <div class="container">
+        <h1>{{ .Title }}</h1>
+        {{ with .Description }}<p class="list-description">{{ . }}</p>{{ end }}
+    </div>
+</section>
+
+<section class="list-content">
+    <div class="container">
+        <div class="authors-grid">
+            {{ range $id, $a := .Site.Data.authors }}
+            {{ $count := len (where $blogPages "Params.author" $id) }}
+            <a href="{{ printf "%s%s/" $authorsPage $id | relURL }}" class="author-card">
+                {{ with $a.avatar }}
+                <img src="{{ . | relURL }}" alt="{{ $a.name }}" class="author-card-avatar" width="88" height="88" loading="lazy">
+                {{ else }}
+                <div class="author-card-avatar author-avatar-placeholder" aria-hidden="true">{{ slicestr $a.name 0 1 }}</div>
+                {{ end }}
+                <h3>{{ $a.name }}</h3>
+                {{ with index $a.role $lang }}<span class="author-role">{{ . }}</span>{{ end }}
+                <span class="author-card-count">{{ $count }} {{ if eq $lang "en" }}article{{ if gt $count 1 }}s{{ end }}{{ else }}article{{ if gt $count 1 }}s{{ end }}{{ end }}</span>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+{{ end }}

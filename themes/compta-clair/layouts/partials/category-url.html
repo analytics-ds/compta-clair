@@ -1,0 +1,20 @@
+{{/*
+Retourne l'URL relative de la page de categorie correspondant a `(index .page.Params.categories 0)`.
+Resolution 100% statique via data/categories.yaml (aucun .GetTerms / .Site.Taxonomies / .Site.GetPage) :
+sur ce site multilingue, ces trois mecanismes se sont averes non fiables ou non deterministes d'une
+langue ou d'un build a l'autre (voir commentaire en tete de data/categories.yaml).
+
+Usage : {{ partial "category-url.html" (dict "page" . "lang" $lang) }}
+*/}}
+{{ $page := .page }}
+{{ $lang := .lang }}
+{{ $catTitle := index $page.Params.categories 0 }}
+{{ $url := "" }}
+{{ range $page.Site.Data.categories }}
+    {{ $title := cond (eq $lang "en") .title_en .title_fr }}
+    {{ $slug := cond (eq $lang "en") .slug_en .slug_fr }}
+    {{ if eq $title $catTitle }}
+        {{ $url = printf "%scategories/%s/" (cond (eq $lang "en") "/en/" "/") $slug }}
+    {{ end }}
+{{ end }}
+{{ return ($url | relURL) }}

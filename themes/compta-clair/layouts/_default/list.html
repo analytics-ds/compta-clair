@@ -1,0 +1,66 @@
+{{ define "main" }}
+{{/* .Site.Language.Lang non fiable sur ce site (voir header.html) */}}
+{{ $lang := "fr" }}
+{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+
+<section class="list-header">
+    <div class="container">
+        <h1>{{ .Title }}</h1>
+        {{ with .Description }}<p class="list-description">{{ . }}</p>{{ end }}
+        <span class="list-count">{{ len .Pages }} {{ if eq $lang "en" }}article{{ if gt (len .Pages) 1 }}s{{ end }}{{ else }}article{{ if gt (len .Pages) 1 }}s{{ end }}{{ end }}</span>
+
+        {{/* .Section vaut "en" au lieu de "blog" sur toute page EN (bug constate, voir MEMORY.md) :
+             on teste donc le permalien plutot que .Section. */}}
+        {{ if strings.HasSuffix .RelPermalink "/blog/" }}
+        <div class="category-filters">
+            <a href="{{ .RelPermalink }}" class="category-filter active">{{ if eq $lang "en" }}All{{ else }}Tout{{ end }}</a>
+            {{ range .Site.Data.categories }}
+            {{ $slug := cond (eq $lang "en") .slug_en .slug_fr }}
+            {{ $title := cond (eq $lang "en") .title_en .title_fr }}
+            {{ $url := printf "%scategories/%s/" (cond (eq $lang "en") "/en/" "/") $slug }}
+            <a href="{{ $url | relURL }}" class="category-filter">{{ $title }}</a>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+</section>
+
+<section class="list-content">
+    <div class="container">
+        <div class="articles-list">
+            {{ range .Pages.ByDate.Reverse }}
+            <article class="article-card-horizontal">
+                <a href="{{ .RelPermalink }}" class="article-card-horizontal-image-wrapper" aria-label="{{ .Title }}">
+                    {{ if .Params.image }}
+                    <img src="{{ .Params.image | relURL }}" alt="{{ .Params.imageAlt | default .Title }}" class="article-card-horizontal-image" loading="lazy" width="300" height="200">
+                    {{ else }}
+                    <span class="article-card-horizontal-image article-card-image-placeholder" aria-hidden="true">{{ slicestr .Title 0 1 }}</span>
+                    {{ end }}
+                </a>
+                <div class="article-body">
+                    {{ $article := . }}
+                    {{ $catURL := partial "category-url.html" (dict "page" $article "lang" $lang) }}
+                    <div class="article-meta">
+                        {{ if $catURL }}
+                        <a href="{{ $catURL }}" class="article-category">{{ index $article.Params.categories 0 }}</a>
+                        {{ end }}
+                        <time>{{ .Date.Format "2 January 2006" }}</time>
+                        {{ if .Params.readingTime }}
+                        <span class="reading-time">{{ .ReadingTime }} min</span>
+                        {{ end }}
+                    </div>
+                    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+                    <p>{{ .Description }}</p>
+                    <div class="article-tags">
+                        {{ range .Params.tags }}
+                        <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag">#{{ . }}</a>
+                        {{ end }}
+                    </div>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+{{ end }}

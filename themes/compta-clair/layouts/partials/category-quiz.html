@@ -1,0 +1,162 @@
+{{/* Quiz de decouverte : oriente le lecteur vers une des 9 categories en 2 questions maximum.
+     Reutilisable partout (home + bas de chaque article). Les cles de categorie utilisees dans
+     l'arbre de questions (ci-dessous, en JS) sont TOUJOURS les slugs FR de data/categories.yaml,
+     quelle que soit la langue de la page : c'est la table $categoriesData, generee ici cote Hugo,
+     qui traduit chaque cle vers le titre/URL/icone localises. */}}
+{{ $lang := "fr" }}
+{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+
+{{ $categoriesData := dict }}
+{{ range .Site.Data.categories }}
+    {{ $title := cond (eq $lang "en") .title_en .title_fr }}
+    {{ $localSlug := cond (eq $lang "en") .slug_en .slug_fr }}
+    {{ $url := printf "%scategories/%s/" (cond (eq $lang "en") "/en/" "/") $localSlug }}
+    {{ $icon := partial "category-icon.html" (dict "slug" .slug_fr) }}
+    {{ $categoriesData = merge $categoriesData (dict .slug_fr (dict "title" $title "url" ($url | relURL) "icon" $icon)) }}
+{{ end }}
+
+<section class="quiz-section">
+    <div class="container container-narrow">
+        <div class="quiz-widget" data-quiz>
+            <div class="quiz-header">
+                <h2 class="quiz-title">{{ if eq $lang "en" }}Not sure where to start?{{ else }}Tu ne sais pas par où commencer ?{{ end }}</h2>
+                <p class="quiz-subtitle">{{ if eq $lang "en" }}Answer two quick questions, we'll point you to the right guide.{{ else }}Réponds à deux petites questions, on t'oriente vers le bon guide.{{ end }}</p>
+            </div>
+            <div class="quiz-body" data-quiz-body></div>
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    var CATEGORIES = {{ $categoriesData | jsonify | safeJS }};
+
+    {{ if eq $lang "en" }}
+    var UI = { back: '← Back', restart: 'Start over', cta: 'View this guide', step: 'Step' };
+    var TREE = {
+        start: 'q1',
+        questions: {
+            q1: {
+                text: 'What are you interested in right now?',
+                options: [
+                    { label: 'Starting or launching a business', next: 'q2' },
+                    { label: 'Running an existing business', next: 'q3' },
+                    { label: 'My personal taxes', category: 'fiscalite-des-particuliers' },
+                    { label: 'The accountant profession', category: 'expert-comptable-et-metiers' }
+                ]
+            },
+            q2: {
+                text: 'Where are you in your business creation project?',
+                options: [
+                    { label: "I'm just starting, not sure where to begin", category: 'creer-son-entreprise' },
+                    { label: "I'm choosing between legal structures (SASU, SAS, EURL, SARL...)", category: 'statuts-juridiques' },
+                    { label: 'I want a simple status under my own name (sole trader)', category: 'micro-entreprise' }
+                ]
+            },
+            q3: {
+                text: "What's your main need right now?",
+                options: [
+                    { label: 'Invoicing, accounting, financial statements', category: 'comptabilite' },
+                    { label: 'Business taxes (VAT, corporate tax, local tax...)', category: 'fiscalite-de-lentreprise' },
+                    { label: 'Payroll and staff wages', category: 'paie-et-social' },
+                    { label: 'Steering and growing my business', category: 'gerer-son-entreprise' }
+                ]
+            }
+        }
+    };
+    {{ else }}
+    var UI = { back: '← Retour', restart: 'Recommencer', cta: 'Voir ce guide', step: 'Étape' };
+    var TREE = {
+        start: 'q1',
+        questions: {
+            q1: {
+                text: "Qu'est-ce qui t'intéresse en ce moment ?",
+                options: [
+                    { label: 'Créer ou lancer une entreprise', next: 'q2' },
+                    { label: 'Gérer une entreprise déjà en activité', next: 'q3' },
+                    { label: 'Ma fiscalité personnelle', category: 'fiscalite-des-particuliers' },
+                    { label: "Le métier d'expert-comptable", category: 'expert-comptable-et-metiers' }
+                ]
+            },
+            q2: {
+                text: 'Tu en es où dans ton projet de création ?',
+                options: [
+                    { label: 'Je démarre, je ne sais pas encore par où commencer', category: 'creer-son-entreprise' },
+                    { label: 'J’hésite entre plusieurs statuts (SASU, SAS, EURL, SARL...)', category: 'statuts-juridiques' },
+                    { label: 'Je veux un statut simple, à mon nom (auto-entrepreneur)', category: 'micro-entreprise' }
+                ]
+            },
+            q3: {
+                text: "Quel est ton besoin principal aujourd'hui ?",
+                options: [
+                    { label: 'Facturation, comptabilité, bilan', category: 'comptabilite' },
+                    { label: 'Impôts et taxes de l’entreprise (TVA, IS, CFE...)', category: 'fiscalite-de-lentreprise' },
+                    { label: 'Salaires et paie de mes employés', category: 'paie-et-social' },
+                    { label: 'Piloter et faire grandir mon entreprise', category: 'gerer-son-entreprise' }
+                ]
+            }
+        }
+    };
+    {{ end }}
+
+    var widget = document.querySelector('[data-quiz]');
+    if (!widget) return;
+    var body = widget.querySelector('[data-quiz-body]');
+    var history = [];
+
+    function renderQuestion(id) {
+        var q = TREE.questions[id];
+        var stepLabel = history.length === 0 ? (UI.step + ' 1') : (UI.step + ' ' + (history.length + 1));
+        var html = '<div class="quiz-step">' + stepLabel + '</div>';
+        html += '<h3 class="quiz-question">' + q.text + '</h3>';
+        html += '<div class="quiz-options">';
+        q.options.forEach(function(opt, i) {
+            html += '<button type="button" class="quiz-option" data-index="' + i + '">' + opt.label + '</button>';
+        });
+        html += '</div>';
+        if (history.length > 0) {
+            html += '<button type="button" class="quiz-back" data-back>' + UI.back + '</button>';
+        }
+        body.innerHTML = html;
+
+        body.querySelectorAll('[data-index]').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var opt = q.options[parseInt(btn.getAttribute('data-index'), 10)];
+                if (opt.category) {
+                    history.push(id);
+                    renderResult(opt.category);
+                } else if (opt.next) {
+                    history.push(id);
+                    renderQuestion(opt.next);
+                }
+            });
+        });
+        var backBtn = body.querySelector('[data-back]');
+        if (backBtn) {
+            backBtn.addEventListener('click', function() {
+                var prev = history.pop();
+                renderQuestion(prev);
+            });
+        }
+    }
+
+    function renderResult(categoryKey) {
+        var cat = CATEGORIES[categoryKey];
+        if (!cat) { return; }
+        var html = '<div class="quiz-result">';
+        html += '<span class="quiz-result-icon" aria-hidden="true">' + cat.icon + '</span>';
+        html += '<h3 class="quiz-result-title">' + cat.title + '</h3>';
+        html += '<a href="' + cat.url + '" class="btn-primary quiz-result-cta">' + UI.cta + '</a>';
+        html += '<button type="button" class="quiz-restart" data-restart>' + UI.restart + '</button>';
+        html += '</div>';
+        body.innerHTML = html;
+
+        body.querySelector('[data-restart]').addEventListener('click', function() {
+            history = [];
+            renderQuestion(TREE.start);
+        });
+    }
+
+    renderQuestion(TREE.start);
+})();
+</script>

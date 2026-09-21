@@ -1,0 +1,115 @@
+baseURL = "https://analytics-ds.github.io/compta-clair/"
+title = "Compta Clair"
+theme = "compta-clair"
+
+defaultContentLanguage = "fr"
+defaultContentLanguageInSubdir = false
+removePathAccents = true
+
+enableRobotsTXT = false
+
+[languages]
+  [languages.fr]
+    languageCode = "fr-FR"
+    languageName = "Français"
+    weight = 1
+    title = "Compta Clair"
+    [languages.fr.params]
+      description = "Compta Clair explique la comptabilité, la fiscalité et la création d'entreprise en clair : guides pratiques, sourcés, à jour, pour dirigeants de TPE, indépendants et particuliers."
+
+  [languages.en]
+    languageCode = "en-US"
+    languageName = "English"
+    weight = 2
+    title = "Compta Clair"
+    [languages.en.params]
+      description = "Compta Clair explains French accounting, taxation and business creation in plain language: practical, sourced, up-to-date guides for small business owners, freelancers and individuals."
+
+# "categories" n'est PAS declaree comme taxonomie : Hugo (0.139 a 0.166 testes) fusionne de facon
+# non deterministe la page de terme auto-generee et la page de contenu personnalisee
+# (content/categories/<slug>/_index.md) sur ce site multilingue, ce qui faisait disparaitre
+# aleatoirement l'intro et la FAQ d'une categorie sur deux selon le build. "categories" est donc
+# une simple section de contenu (layouts/categories/list.html), et le champ `categories` du
+# frontmatter des articles reste un parametre ordinaire, resolu manuellement (voir
+# partials/category-url.html) plutot que via .GetTerms / .Site.Taxonomies.
+[taxonomies]
+  tag = "tags"
+
+# Menu principal FR
+[[languages.fr.menus.main]]
+  name = "Accueil"
+  url = "/"
+  weight = 1
+[[languages.fr.menus.main]]
+  name = "Le Blog"
+  url = "/blog/"
+  weight = 2
+[[languages.fr.menus.main]]
+  name = "Auteurs"
+  url = "/auteurs/"
+  weight = 3
+[[languages.fr.menus.main]]
+  name = "Qui sommes-nous"
+  url = "/qui-sommes-nous/"
+  weight = 4
+
+# Menu principal EN
+[[languages.en.menus.main]]
+  name = "Home"
+  url = "/en/"
+  weight = 1
+[[languages.en.menus.main]]
+  name = "The Blog"
+  url = "/en/blog/"
+  weight = 2
+[[languages.en.menus.main]]
+  name = "Authors"
+  url = "/en/authors/"
+  weight = 3
+[[languages.en.menus.main]]
+  name = "About us"
+  url = "/en/about-us/"
+  weight = 4
+
+[params]
+  # A REMETTRE A false DES QUE LE NOM DE DOMAINE DEFINITIF EST EN PLACE.
+  # Tant que le site vit sur analytics-ds.github.io, on ne veut pas le faire indexer : sinon
+  # il faudra gerer une migration d'URL et du contenu duplique au moment du changement de
+  # domaine. Pilote la balise <meta name="robots"> de partials/seo-head.html.
+  noindex = true
+  default_og_image = "/images/og-default.jpg"
+  logo = "/favicon.svg"
+  founding_year = "2026"
+  expertise = ["Comptabilité", "Fiscalité", "Création d'entreprise", "Paie et droit social"]
+
+[related]
+  includeNewer = true
+  threshold = 80
+  [[related.indices]]
+    name = "categories"
+    weight = 100
+  [[related.indices]]
+    name = "tags"
+    weight = 80
+
+[markup]
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    # ordered = false : le sommaire est rendu en <ul> (puces vertes en CSS), pas en <ol> numerote.
+    ordered = false
+  [markup.goldmark.renderer]
+    unsafe = true
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  page = ["HTML"]
+
+[pagination]
+  pagerSize = 12

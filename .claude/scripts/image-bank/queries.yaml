@@ -1,0 +1,74 @@
+# Requetes de recherche de la banque d'images, une entree par categorie du site.
+#
+# Les requetes sont en ANGLAIS : Unsplash et Pexels indexent leurs photos en anglais,
+# une requete francaise ne remonte quasiment rien.
+#
+# Pour recharger la banque quand elle s'epuise : ajouter des requetes ici, relancer
+# fetch-candidates.py, cocher les nouvelles vignettes. Les photos deja dans la banque
+# sont automatiquement exclues des candidats.
+#
+# `tags` alimente les mots-cles de chaque image dans data/image-bank.yaml : ce sont eux
+# que Claude matche avec le sujet de l'article au moment de /create-article-geo.
+
+- category: creer-son-entreprise
+  tags: [creation, immatriculation, lancement, projet]
+  queries:
+    - business plan notebook desk
+    - new shop owner opening
+    - startup founder paperwork
+
+- category: statuts-juridiques
+  tags: [statut, contrat, juridique, signature]
+  queries:
+    - signing contract pen office
+    - legal documents desk
+    - business partners handshake office
+
+- category: micro-entreprise
+  tags: [freelance, independant, auto-entrepreneur, solo]
+  queries:
+    - freelancer working laptop home
+    - small craft business owner workshop
+    - solo entrepreneur desk
+
+- category: comptabilite
+  tags: [comptabilite, facture, bilan, calcul]
+  queries:
+    - accounting calculator invoice desk
+    - bookkeeping spreadsheet laptop
+    - financial documents folder
+
+- category: fiscalite-de-lentreprise
+  tags: [impot, tva, declaration, fiscalite]
+  queries:
+    - tax form paperwork desk
+    - calculator tax documents
+    - french administrative building
+
+- category: paie-et-social
+  tags: [paie, salaire, social, urssaf]
+  queries:
+    - payroll documents desk
+    - employees meeting small office
+    - salary calculation paperwork
+
+- category: gerer-son-entreprise
+  tags: [gestion, tresorerie, pilotage, equipe]
+  queries:
+    - small business owner counter shop
+    - business charts laptop desk
+    - team meeting small office
+
+- category: fiscalite-des-particuliers
+  tags: [immobilier, location, revenus, patrimoine]
+  queries:
+    - house keys rental property
+    - apartment building facade france
+    - personal finance documents home
+
+- category: expert-comptable-et-metiers
+  tags: [conseil, expert, rendez-vous, accompagnement]
+  queries:
+    - accountant client meeting office
+    - professional advisor explaining documents
+    - consultant desk conversation

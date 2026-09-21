@@ -1,0 +1,79 @@
+{{ define "main" }}
+{{/* .Site.Language.Lang non fiable sur ce site (voir header.html) */}}
+{{ $lang := "fr" }}
+{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+{{/* .Site.RegularPages/.Site.GetPage("blog") sont peu fiables en langue non par defaut sur ce
+     site : on reconstitue $blogPages depuis le registre statique data/articles.yaml. */}}
+{{ $blogPages := slice }}
+{{ range .Site.Data.articles }}
+    {{ $artSlug := cond (eq $lang "en") .slug_en .slug_fr }}
+    {{ $artPath := cond (eq $lang "en") (printf "en/blog/%s" $artSlug) (printf "blog/%s" $artSlug) }}
+    {{ with $.Site.GetPage $artPath }}{{ $blogPages = $blogPages | append . }}{{ end }}
+{{ end }}
+
+<section class="sitemap-page">
+    <header class="list-header">
+        <div class="container">
+            <h1>{{ if eq $lang "en" }}Sitemap{{ else }}Plan du site{{ end }}</h1>
+            <p class="list-description">{{ if eq $lang "en" }}All pages of {{ .Site.Title }}{{ else }}Toutes les pages de {{ .Site.Title }}{{ end }}</p>
+        </div>
+    </header>
+
+    <div class="sitemap-content">
+        <div class="container container-narrow">
+
+            <div class="sitemap-section">
+                <h2>{{ if eq $lang "en" }}Main pages{{ else }}Pages principales{{ end }}</h2>
+                <ul class="sitemap-list">
+                    <li><a href="{{ (cond (eq $lang "en") "/en/" "/") | relURL }}">{{ if eq $lang "en" }}Home{{ else }}Accueil{{ end }}</a></li>
+                    <li><a href="{{ (cond (eq $lang "en") "/en/blog/" "/blog/") | relURL }}">{{ if eq $lang "en" }}The Blog{{ else }}Le Blog{{ end }}</a></li>
+                    <li><a href="{{ (cond (eq $lang "en") "/en/authors/" "/auteurs/") | relURL }}">{{ if eq $lang "en" }}Authors{{ else }}Auteurs{{ end }}</a></li>
+                    <li><a href="{{ (cond (eq $lang "en") "/en/about-us/" "/qui-sommes-nous/") | relURL }}">{{ if eq $lang "en" }}About us{{ else }}Qui sommes-nous{{ end }}</a></li>
+                    <li><a href="{{ (cond (eq $lang "en") "/en/editorial-policy/" "/charte-editoriale/") | relURL }}">{{ if eq $lang "en" }}Editorial policy{{ else }}Charte éditoriale{{ end }}</a></li>
+                    <li><a href="{{ (cond (eq $lang "en") "/en/contact/" "/contact/") | relURL }}">Contact</a></li>
+                    <li><a href="{{ (cond (eq $lang "en") "/en/legal-notice/" "/mentions-legales/") | relURL }}">{{ if eq $lang "en" }}Legal notice{{ else }}Mentions légales{{ end }}</a></li>
+                </ul>
+            </div>
+
+            <div class="sitemap-section">
+                <h2>{{ if eq $lang "en" }}Authors{{ else }}Auteurs{{ end }}</h2>
+                <ul class="sitemap-list">
+                    {{ range $id, $a := .Site.Data.authors }}
+                    <li><a href="{{ printf "%s%s/" (cond (eq $lang "en") "/en/authors/" "/auteurs/") $id | relURL }}">{{ $a.name }}</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+
+            {{ range .Site.Data.categories }}
+            {{ $catTitle := cond (eq $lang "en") .title_en .title_fr }}
+            {{ $catArticles := slice }}
+            {{ range $blogPages }}
+                {{ if eq (index .Params.categories 0) $catTitle }}
+                    {{ $catArticles = $catArticles | append . }}
+                {{ end }}
+            {{ end }}
+            {{ $catArticles = sort $catArticles "Date" "desc" }}
+            <div class="sitemap-section">
+                <h2>{{ $catTitle }}</h2>
+                <ul class="sitemap-list">
+                    {{ range $catArticles }}
+                    <li>
+                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                        <span class="sitemap-date">
+                            {{ with .Params.lastmod }}
+                                {{ (time .).Format "02/01/2006" }}
+                            {{ else }}
+                                {{ .Date.Format "02/01/2006" }}
+                            {{ end }}
+                        </span>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+            {{ end }}
+
+        </div>
+    </div>
+</section>
+
+{{ end }}

@@ -1,0 +1,147 @@
+# Auteurs du blog — multilingue FR/EN
+# Structure : map d'auteurs indexee par ID (slug), utilise dans le frontmatter des articles (author: <id>).
+# IMPORTANT : ne jamais attribuer a ces 4 auteurs le titre reglemente d'"expert-comptable",
+# reserve aux membres inscrits a l'Ordre. Ce sont des redacteurs specialises.
+#
+# Avatars : illustrations plates SVG originales (pas de photo), une par auteur, dans
+# static/images/authors/<id>.svg. Point ouvert precedent (avatars non generes) resolu le 2026-09-17.
+
+camille-renaud:
+  id: camille-renaud
+  name: Camille Renaud
+  type: person
+  avatar: "/images/authors/camille-renaud.svg"
+  linkedinUrl: ""
+  jobTitle:
+    fr: Rédactrice en chef, spécialiste création d'entreprise
+    en: Editor-in-chief, business creation specialist
+  role:
+    fr: Rédactrice en chef, spécialiste création d'entreprise
+    en: Editor-in-chief, business creation specialist
+  bio:
+    fr: "Camille Renaud est rédactrice en chef de Compta Clair. Elle suit depuis plus de dix ans les démarches de création d'entreprise en France : choix du statut, formalités, aides à la création. Elle décortique les textes officiels pour en tirer des guides clairs et à jour."
+    en: "Camille Renaud is editor-in-chief of Compta Clair. For over ten years she has followed French business creation procedures: choosing a legal structure, formalities, start-up support schemes. She reads official texts closely to turn them into clear, up-to-date guides."
+  expertise:
+    - Création d'entreprise
+    - Statuts juridiques
+    - Micro-entreprise
+    - Formalités Kbis
+    - Aides à la création
+  topics:
+    - creer son entreprise
+    - creation entreprise
+    - kbis
+    - acre
+    - business plan
+    - statuts juridiques
+    - statut juridique
+    - sas
+    - sasu
+    - sarl
+    - eurl
+    - holding
+    - micro entreprise
+    - auto entrepreneur
+
+julien-marchal:
+  id: julien-marchal
+  name: Julien Marchal
+  type: person
+  avatar: "/images/authors/julien-marchal.svg"
+  linkedinUrl: ""
+  jobTitle:
+    fr: Rédacteur spécialisé comptabilité et fiscalité des entreprises
+    en: Specialist writer, business accounting and taxation
+  role:
+    fr: Rédacteur spécialisé comptabilité et fiscalité des entreprises
+    en: Specialist writer, business accounting and taxation
+  bio:
+    fr: "Julien Marchal couvre la comptabilité et la fiscalité des entreprises depuis plus de dix ans. Facturation électronique, plan comptable, TVA, impôt sur les sociétés : il traduit les obligations réglementaires en explications concrètes pour les dirigeants de TPE."
+    en: "Julien Marchal has covered business accounting and taxation for over ten years. E-invoicing, chart of accounts, VAT, corporate tax: he translates regulatory obligations into concrete explanations for small business owners."
+  expertise:
+    - Comptabilité
+    - Fiscalité des entreprises
+    - Facturation électronique
+    - TVA et impôt sur les sociétés
+    - Gestion de trésorerie
+  topics:
+    - comptabilite
+    - facture electronique
+    - facturation electronique
+    - compte de resultat
+    - plan comptable
+    - bilan comptable
+    - fiscalite entreprise
+    - cfe
+    - bic
+    - tva
+    - impot societes
+    - tresorerie
+    - note de frais
+    - facturation
+    - gerer son entreprise
+
+nadia-benali:
+  id: nadia-benali
+  name: Nadia Benali
+  type: person
+  avatar: "/images/authors/nadia-benali.svg"
+  linkedinUrl: ""
+  jobTitle:
+    fr: Rédactrice spécialisée paie et droit social
+    en: Payroll and labor law writer
+  role:
+    fr: Rédactrice spécialisée paie et droit social
+    en: Payroll and labor law writer
+  bio:
+    fr: "Nadia Benali écrit sur la paie et le droit social depuis huit ans : SMIC, fiche de paie, rupture conventionnelle, dividendes. Elle suit aussi les métiers réglementés de la comptabilité et du conseil pour en expliquer le fonctionnement au grand public."
+    en: "Nadia Benali has written about payroll and labor law for eight years: minimum wage, payslips, mutually agreed termination, dividends. She also follows regulated accounting and advisory professions to explain how they work to the general public."
+  expertise:
+    - Paie
+    - Droit social
+    - Rupture conventionnelle
+    - Dividendes
+    - Professions réglementées
+  topics:
+    - paie et social
+    - paie
+    - smic
+    - rupture conventionnelle
+    - fiche de paie
+    - dividendes
+    - expert comptable et metiers
+    - infirmiere liberale
+    - profession liberale
+    - droit social
+    - urssaf
+
+antoine-leclerc:
+  id: antoine-leclerc
+  name: Antoine Leclerc
+  type: person
+  avatar: "/images/authors/antoine-leclerc.svg"
+  linkedinUrl: ""
+  jobTitle:
+    fr: Rédacteur spécialisé fiscalité des particuliers et immobilier
+    en: Personal taxation and real estate writer
+  role:
+    fr: Rédacteur spécialisé fiscalité des particuliers et immobilier
+    en: Personal taxation and real estate writer
+  bio:
+    fr: "Antoine Leclerc est spécialisé dans la fiscalité des particuliers et l'immobilier locatif : SCI, LMNP, impôt sur le revenu, plus-value immobilière. Il s'appuie systématiquement sur les textes de l'administration fiscale pour vérifier chaque chiffre avancé."
+    en: "Antoine Leclerc specializes in personal taxation and rental real estate: SCI, LMNP status, income tax, capital gains on property. He systematically relies on official tax administration texts to verify every figure."
+  expertise:
+    - Fiscalité des particuliers
+    - Immobilier locatif
+    - SCI et LMNP
+    - Impôt sur le revenu
+    - Plus-value immobilière
+  topics:
+    - fiscalite particuliers
+    - fiscalite des particuliers
+    - sci
+    - lmnp
+    - impot sur le revenu
+    - plus value immobiliere
+    - immobilier locatif
+    - declaration impots

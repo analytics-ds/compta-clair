@@ -1,0 +1,1260 @@
+# Banque d'images de Compta Clair — index lu par Claude (/create-article-geo) et par Hugo.
+#
+# Genere par .claude/scripts/image-bank/build-bank.py, a partir d'une selection validee
+# a la main sur la planche-contact. Ne pas ajouter d'entree a la main sans copier le
+# fichier image correspondant dans static/images/banque/.
+#
+# Champs :
+#   id         source:identifiant, sert a ne jamais re-telecharger deux fois la meme photo
+#   file/path  nom du fichier WebP et chemin Hugo
+#   categories slugs FR de data/categories.yaml — premier filtre du tirage
+#   tags       mots-cles FR — second filtre, matches avec le sujet de l'article
+#   alt_fr     texte alternatif francais (max 125 car.), a ecrire par Claude
+#   alt_en     texte alternatif anglais (max 125 car.), a ecrire par Claude
+#   credit     mention affichee sous l'image de l'article (obligatoire)
+#   used_by    slugs des articles qui utilisent deja cette image (evite les doublons)
+#
+# `alt_fr: ""` signifie que l'image n'est pas encore utilisable : Claude doit rediger
+# les deux alt avant le premier tirage.
+
+- id: unsplash:DJ7bWa-Gwks
+  file: creer-son-entreprise-01.webp
+  path: /images/banque/creer-son-entreprise-01.webp
+  categories:
+  - creer-son-entreprise
+  tags:
+  - creation
+  - immatriculation
+  - lancement
+  - projet
+  alt_fr: 'Bureau en bois vu de dessus : ordinateur portable, carnet a spirale, stylos, loupe et tasse
+    de cafe'
+  alt_en: Wooden desk from above with a laptop, spiral notebook, pens, magnifier and a cup of coffee
+  alt_source_en: cup of coffee near MacBook Pro
+  credit: Photo de ian dooley sur Unsplash
+  source_url: https://unsplash.com/photos/cup-of-coffee-near-macbook-pro-DJ7bWa-Gwks
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:cckf4TsHAuw
+  file: creer-son-entreprise-02.webp
+  path: /images/banque/creer-son-entreprise-02.webp
+  categories:
+  - creer-son-entreprise
+  tags:
+  - creation
+  - immatriculation
+  - lancement
+  - projet
+  alt_fr: Ordinateur portable, tasse de cafe et bloc-notes manuscrit sur une table en bois pres d'une
+    fenetre
+  alt_en: Laptop, coffee mug and handwritten notepad on a wooden table by a window
+  alt_source_en: MacBook Pro, white ceramic mug,and black smartphone on table
+  credit: Photo de Andrew Neel sur Unsplash
+  source_url: https://unsplash.com/photos/macbook-pro-white-ceramic-mugand-black-smartphone-on-table-cckf4TsHAuw
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:9OGNpJPVMZ8
+  file: creer-son-entreprise-03.webp
+  path: /images/banque/creer-son-entreprise-03.webp
+  categories:
+  - creer-son-entreprise
+  tags:
+  - creation
+  - immatriculation
+  - lancement
+  - projet
+  alt_fr: Carnet a spirale ouvert sur une page blanche, stylo et gobelet de cafe sur une table en bois
+  alt_en: Spiral notebook open on a blank page with a pen and a coffee cup on a wooden table
+  alt_source_en: white printer paper on brown wooden table
+  credit: Photo de Kelly Sikkema sur Unsplash
+  source_url: https://unsplash.com/photos/white-printer-paper-on-brown-wooden-table-9OGNpJPVMZ8
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:7947653
+  file: creer-son-entreprise-04.webp
+  path: /images/banque/creer-son-entreprise-04.webp
+  categories:
+  - creer-son-entreprise
+  tags:
+  - creation
+  - immatriculation
+  - lancement
+  - projet
+  alt_fr: Document imprime presentant un schema circulaire des etapes de creation d'une entreprise
+  alt_en: Printed document showing a circular diagram of the stages of setting up a business
+  alt_source_en: High-angle view of a document showing business stages with eyeglasses on a desk.
+  credit: Photo de RDNE Stock project sur Pexels
+  source_url: https://www.pexels.com/photo/blue-and-white-book-on-brown-wooden-table-7947653/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:15635242
+  file: creer-son-entreprise-05.webp
+  path: /images/banque/creer-son-entreprise-05.webp
+  categories:
+  - creer-son-entreprise
+  tags:
+  - creation
+  - immatriculation
+  - lancement
+  - projet
+  alt_fr: Agenda ouvert avec une note manuscrite, pose a cote d'un clavier sur un bureau en bois
+  alt_en: Open planner with a handwritten note next to a keyboard on a wooden desk
+  alt_source_en: Close-up of a desk with a keyboard and a calendar open to a marketing strategy note.
+  credit: Photo de Walls.io sur Pexels
+  source_url: https://www.pexels.com/photo/notes-in-a-calendar-and-keyboard-15635242/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:8475169
+  file: creer-son-entreprise-06.webp
+  path: /images/banque/creer-son-entreprise-06.webp
+  categories:
+  - creer-son-entreprise
+  tags:
+  - creation
+  - immatriculation
+  - lancement
+  - projet
+  alt_fr: Commercant en tablier ouvrant la porte vitree de son epicerie, ardoises du menu de part et d'autre
+  alt_en: Shopkeeper in an apron opening the glass door of his grocery, menu boards on either side
+  alt_source_en: A man in an apron opens a grocery store door in Portugal, ready for business.
+  credit: Photo de Kampus Production sur Pexels
+  source_url: https://www.pexels.com/photo/a-man-in-brown-apron-8475169/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:4473093
+  file: creer-son-entreprise-07.webp
+  path: /images/banque/creer-son-entreprise-07.webp
+  categories:
+  - creer-son-entreprise
+  tags:
+  - creation
+  - immatriculation
+  - lancement
+  - projet
+  alt_fr: Commercante accrochant une pancarte Ouvert a la porte bleue de sa boutique
+  alt_en: Shop owner hanging an Open sign on the blue door of her shop
+  alt_source_en: A woman adjusts an open sign on a blue wooden door of a cafe inviting customers inside.
+  credit: Photo de Ketut Subiyanto sur Pexels
+  source_url: https://www.pexels.com/photo/photo-of-woman-putting-wooden-signage-on-doorknob-4473093/
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:snNHKZ-mGfE
+  file: statuts-juridiques-01.webp
+  path: /images/banque/statuts-juridiques-01.webp
+  categories:
+  - statuts-juridiques
+  tags:
+  - statut
+  - contrat
+  - juridique
+  - signature
+  alt_fr: Piles de dossiers papier herisses d'onglets de couleur dans un bureau
+  alt_en: Stacks of paper files bristling with coloured tabs in an office
+  alt_source_en: stacks of paper documents and file folders
+  credit: Photo de Wesley Tingey sur Unsplash
+  source_url: https://unsplash.com/photos/stacks-of-paper-documents-and-file-folders-snNHKZ-mGfE
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:doplSDELX7E
+  file: statuts-juridiques-02.webp
+  path: /images/banque/statuts-juridiques-02.webp
+  categories:
+  - statuts-juridiques
+  tags:
+  - statut
+  - contrat
+  - juridique
+  - signature
+  alt_fr: Deux personnes penchees sur une table signant des documents au stylo
+  alt_en: Two people leaning over a table signing documents with a pen
+  alt_source_en: person in orange long sleeve shirt writing on white paper
+  credit: Photo de Romain Dancre sur Unsplash
+  source_url: https://unsplash.com/photos/person-in-orange-long-sleeve-shirt-writing-on-white-paper-doplSDELX7E
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:qFSQFSmfZkA
+  file: statuts-juridiques-03.webp
+  path: /images/banque/statuts-juridiques-03.webp
+  categories:
+  - statuts-juridiques
+  tags:
+  - statut
+  - contrat
+  - juridique
+  - signature
+  alt_fr: Poignee de main au-dessus d'un bureau, avec un presse-papiers et un ordinateur portable
+  alt_en: Handshake over a desk with a clipboard and a laptop
+  alt_source_en: a man and a woman shaking hands in front of a laptop
+  credit: Photo de Mina Rad sur Unsplash
+  source_url: https://unsplash.com/photos/a-man-and-a-woman-shaking-hands-in-front-of-a-laptop-qFSQFSmfZkA
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:7TpOlUnBMYk
+  file: statuts-juridiques-04.webp
+  path: /images/banque/statuts-juridiques-04.webp
+  categories:
+  - statuts-juridiques
+  tags:
+  - statut
+  - contrat
+  - juridique
+  - signature
+  alt_fr: Deux hommes en tenue de bureau se serrant la main devant un immeuble vitre
+  alt_en: Two men in business clothes shaking hands in front of a glass building
+  alt_source_en: Two businessmen shaking hands outside modern building
+  credit: Photo de Vitaly Gariev sur Unsplash
+  source_url: https://unsplash.com/photos/two-businessmen-shaking-hands-outside-modern-building-7TpOlUnBMYk
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:39148380
+  file: statuts-juridiques-05.webp
+  path: /images/banque/statuts-juridiques-05.webp
+  categories:
+  - statuts-juridiques
+  tags:
+  - statut
+  - contrat
+  - juridique
+  - signature
+  alt_fr: Main d'un homme en costume ecrivant le mot contrat au stylo plume sur une feuille blanche
+  alt_en: Hand of a man in a suit writing the word contract with a fountain pen on a blank sheet
+  alt_source_en: A professional signing a business contract with a fountain pen on a wooden desk.
+  credit: Photo de George Piskov sur Pexels
+  source_url: https://www.pexels.com/photo/business-contract-signing-with-elegant-pen-39148380/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:7567600
+  file: statuts-juridiques-06.webp
+  path: /images/banque/statuts-juridiques-06.webp
+  categories:
+  - statuts-juridiques
+  tags:
+  - statut
+  - contrat
+  - juridique
+  - signature
+  alt_fr: Main remplissant au stylo un formulaire administratif pose sur un bureau
+  alt_en: Hand filling in an administrative form with a pen on a desk
+  alt_source_en: Detailed view of a hand writing a signature on an official document with a ballpoint
+    pen.
+  credit: Photo de Tima Miroshnichenko sur Pexels
+  source_url: https://www.pexels.com/photo/person-signing-on-a-paper-7567600/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:7876051
+  file: statuts-juridiques-07.webp
+  path: /images/banque/statuts-juridiques-07.webp
+  categories:
+  - statuts-juridiques
+  tags:
+  - statut
+  - contrat
+  - juridique
+  - signature
+  alt_fr: ''
+  alt_en: ''
+  alt_source_en: Three adults discussing divorce documents in a formal office setting with legal statue
+    in view.
+  credit: Photo de kaboompics.com sur Pexels
+  source_url: https://www.pexels.com/photo/people-holding-divorce-papers-7876051/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:8112113
+  file: statuts-juridiques-08.webp
+  path: /images/banque/statuts-juridiques-08.webp
+  categories:
+  - statuts-juridiques
+  tags:
+  - statut
+  - contrat
+  - juridique
+  - signature
+  alt_fr: Homme en costume annotant un document a son bureau, statue de la justice au premier plan
+  alt_en: Man in a suit annotating a document at his desk, a statue of Justice in the foreground
+  alt_source_en: A focused lawyer in an office setting writing and reviewing legal documents, symbolizing
+    expertise and professionalism.
+  credit: Photo de Pavel Danilyuk sur Pexels
+  source_url: https://www.pexels.com/photo/professional-lawyer-writing-on-a-notebook-8112113/
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:Hcfwew744z4
+  file: micro-entreprise-01.webp
+  path: /images/banque/micro-entreprise-01.webp
+  categories:
+  - micro-entreprise
+  tags:
+  - freelance
+  - independant
+  - auto-entrepreneur
+  - solo
+  alt_fr: Femme en pull moutarde tapant sur un ordinateur portable pose sur une table en bois
+  alt_en: Woman in a mustard jumper typing on a laptop on a wooden table
+  alt_source_en: person using laptop computer
+  credit: Photo de Christin Hume sur Unsplash
+  source_url: https://unsplash.com/photos/person-using-laptop-computer-Hcfwew744z4
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:C3V88BOoRoM
+  file: micro-entreprise-02.webp
+  path: /images/banque/micro-entreprise-02.webp
+  categories:
+  - micro-entreprise
+  tags:
+  - freelance
+  - independant
+  - auto-entrepreneur
+  - solo
+  alt_fr: Homme travaillant sur son ordinateur portable a une table en bois, pres d'une fenetre
+  alt_en: Man working on his laptop at a wooden table near a window
+  alt_source_en: man operating laptop on top of table
+  credit: Photo de Bench Accounting sur Unsplash
+  source_url: https://unsplash.com/photos/man-operating-laptop-on-top-of-table-C3V88BOoRoM
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:YzLMmxDTrvI
+  file: micro-entreprise-03.webp
+  path: /images/banque/micro-entreprise-03.webp
+  categories:
+  - micro-entreprise
+  tags:
+  - freelance
+  - independant
+  - auto-entrepreneur
+  - solo
+  alt_fr: Femme travaillant sur un ordinateur portable pres d'une fenetre, une calculatrice a cote d'elle
+  alt_en: Woman working on a laptop by a window with a calculator beside her
+  alt_source_en: a woman sitting at a table with a laptop
+  credit: Photo de Windows sur Unsplash
+  source_url: https://unsplash.com/photos/a-woman-sitting-at-a-table-with-a-laptop-YzLMmxDTrvI
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:5410124
+  file: micro-entreprise-04.webp
+  path: /images/banque/micro-entreprise-04.webp
+  categories:
+  - micro-entreprise
+  tags:
+  - freelance
+  - independant
+  - auto-entrepreneur
+  - solo
+  alt_fr: Fleuriste en tablier composant un bouquet dans son atelier
+  alt_en: Florist in an apron arranging a bouquet in her workshop
+  alt_source_en: Concentrated Asian female florist arranging flowers in bouquet while working in floral
+    shop
+  credit: Photo de Amina Filkins sur Pexels
+  source_url: https://www.pexels.com/photo/woman-making-floral-bouquet-in-shop-5410124/
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:fPTWq6S1fjg
+  file: micro-entreprise-05.webp
+  path: /images/banque/micro-entreprise-05.webp
+  categories:
+  - micro-entreprise
+  tags:
+  - freelance
+  - independant
+  - auto-entrepreneur
+  - solo
+  alt_fr: Artisan en tablier de cuir relevant sa loupe frontale dans son atelier
+  alt_en: Craftsman in a leather apron lifting his magnifying visor in his workshop
+  alt_source_en: Man with magnifying glasses adjusts headband in workshop
+  credit: Photo de Caden Norcott sur Unsplash
+  source_url: https://unsplash.com/photos/man-with-magnifying-glasses-adjusts-headband-in-workshop-fPTWq6S1fjg
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:4491912
+  file: micro-entreprise-06.webp
+  path: /images/banque/micro-entreprise-06.webp
+  categories:
+  - micro-entreprise
+  tags:
+  - freelance
+  - independant
+  - auto-entrepreneur
+  - solo
+  alt_fr: Menuisier travaillant sur un ordinateur portable a son etabli, entoure de ses outils
+  alt_en: Woodworker using a laptop at his bench, surrounded by his tools
+  alt_source_en: A carpenter using a laptop surrounded by tools in a wooden workshop, merging craft with
+    technology.
+  credit: Photo de Ivan S sur Pexels
+  source_url: https://www.pexels.com/photo/person-using-macbook-pro-on-brown-wooden-table-4491912/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:34224991
+  file: micro-entreprise-07.webp
+  path: /images/banque/micro-entreprise-07.webp
+  categories:
+  - micro-entreprise
+  tags:
+  - freelance
+  - independant
+  - auto-entrepreneur
+  - solo
+  alt_fr: Jeune femme prenant des notes a cote de son ordinateur portable dans un bureau vitre
+  alt_en: Young woman taking notes next to her laptop in a glass-walled office
+  alt_source_en: Young woman wearing headphones, writing in notebook at office desk with city view.
+  credit: Photo de Julio Lopez sur Pexels
+  source_url: https://www.pexels.com/photo/woman-working-at-office-desk-with-laptop-34224991/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:4467670
+  file: micro-entreprise-08.webp
+  path: /images/banque/micro-entreprise-08.webp
+  categories:
+  - micro-entreprise
+  tags:
+  - freelance
+  - independant
+  - auto-entrepreneur
+  - solo
+  alt_fr: Femme remuant un cafe a un bureau blanc ou sont poses un ordinateur portable et un telephone
+  alt_en: Woman stirring a coffee at a white desk with a laptop and a phone
+  alt_source_en: Crop unrecognizable female in black clothes working on modern netbook and stirring cup
+    of fresh aromatic espresso
+  credit: Photo de kaboompics.com sur Pexels
+  source_url: https://www.pexels.com/photo/crop-woman-working-on-laptop-and-drinking-coffee-4467670/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:7680696
+  file: comptabilite-01.webp
+  path: /images/banque/comptabilite-01.webp
+  categories:
+  - comptabilite
+  tags:
+  - comptabilite
+  - facture
+  - bilan
+  - calcul
+  alt_fr: Mains pianotant sur une calculatrice rose posee sur une pile de tickets de caisse et de factures
+  alt_en: Hands using a pink calculator on a pile of receipts and invoices
+  alt_source_en: Hands using a pink calculator to manage expenses amidst various receipts and documents.
+  credit: Photo de kaboompics.com sur Pexels
+  source_url: https://www.pexels.com/photo/a-close-up-shot-of-a-person-using-a-calculator-7680696/
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:0rHxkbcvQAE
+  file: comptabilite-02.webp
+  path: /images/banque/comptabilite-02.webp
+  categories:
+  - comptabilite
+  tags:
+  - comptabilite
+  - facture
+  - bilan
+  - calcul
+  alt_fr: Calculatrice de bureau posee sur un carnet a souches ouvert et des notes manuscrites
+  alt_en: Desk calculator resting on an open receipt book and handwritten notes
+  alt_source_en: a calculator sitting on top of a wooden table
+  credit: Photo de FIN sur Unsplash
+  source_url: https://unsplash.com/photos/a-calculator-sitting-on-top-of-a-wooden-table-0rHxkbcvQAE
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:7947999
+  file: comptabilite-03.webp
+  path: /images/banque/comptabilite-03.webp
+  categories:
+  - comptabilite
+  tags:
+  - comptabilite
+  - facture
+  - bilan
+  - calcul
+  alt_fr: Personne consultant un tableau de bord de graphiques financiers sur un ordinateur portable
+  alt_en: Person reviewing a dashboard of financial charts on a laptop
+  alt_source_en: Focused business analysis with charts and graphs on a laptop in a modern office setting.
+  credit: Photo de RDNE Stock project sur Pexels
+  source_url: https://www.pexels.com/photo/person-using-black-and-gray-laptop-7947999/
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:mKYf6jV-rYo
+  file: comptabilite-04.webp
+  path: /images/banque/comptabilite-04.webp
+  categories:
+  - comptabilite
+  tags:
+  - comptabilite
+  - facture
+  - bilan
+  - calcul
+  alt_fr: Homme en chemise rangeant des documents dans une chemise cartonnee bleue sur un bureau
+  alt_en: Man in a shirt filing documents into a blue folder on a desk
+  alt_source_en: a man in a white shirt and tie holding a folder
+  credit: Photo de Invest Europe sur Unsplash
+  source_url: https://unsplash.com/photos/a-man-in-a-white-shirt-and-tie-holding-a-folder-mKYf6jV-rYo
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:4792286
+  file: comptabilite-05.webp
+  path: /images/banque/comptabilite-05.webp
+  categories:
+  - comptabilite
+  tags:
+  - comptabilite
+  - facture
+  - bilan
+  - calcul
+  alt_fr: Trieur a soufflets bleu pastel rempli de documents classes, pose sur un bureau en bois
+  alt_en: Pastel blue accordion file full of sorted documents on a wooden desk
+  alt_source_en: From above of briefcase for documents with papers placed on wooden table in daytime
+  credit: Photo de Anete Lusina sur Pexels
+  source_url: https://www.pexels.com/photo/briefcase-for-documents-placed-on-table-4792286/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:4792287
+  file: comptabilite-06.webp
+  path: /images/banque/comptabilite-06.webp
+  categories:
+  - comptabilite
+  tags:
+  - comptabilite
+  - facture
+  - bilan
+  - calcul
+  alt_fr: Mains ouvrant un trieur a soufflets rempli de dossiers pour y ranger une feuille
+  alt_en: Hands opening an accordion file full of folders to put a sheet away
+  alt_source_en: Crop faceless person putting sheet of paper in briefcase for documents placed on table
+  credit: Photo de Anete Lusina sur Pexels
+  source_url: https://www.pexels.com/photo/person-taking-white-paper-from-folder-4792287/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:7680681
+  file: comptabilite-07.webp
+  path: /images/banque/comptabilite-07.webp
+  categories:
+  - comptabilite
+  tags:
+  - comptabilite
+  - facture
+  - bilan
+  - calcul
+  alt_fr: Tickets de caisse orange et courriers administratifs etales sur un bureau blanc
+  alt_en: Orange receipts and administrative letters spread over a white desk
+  alt_source_en: Close-up of a tidy desk with receipts, documents, and office stationery for business
+    organization.
+  credit: Photo de kaboompics.com sur Pexels
+  source_url: https://www.pexels.com/photo/receipts-and-documents-on-top-of-a-desk-7680681/
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:VnK5iT01HYQ
+  file: fiscalite-de-lentreprise-01.webp
+  path: /images/banque/fiscalite-de-lentreprise-01.webp
+  categories:
+  - fiscalite-de-lentreprise
+  tags:
+  - impot
+  - tva
+  - declaration
+  - fiscalite
+  alt_fr: ''
+  alt_en: ''
+  alt_source_en: a wooden table topped with papers and a pen
+  credit: Photo de 2H Media sur Unsplash
+  source_url: https://unsplash.com/photos/a-wooden-table-topped-with-papers-and-a-pen-VnK5iT01HYQ
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:ZlJBqvnAti8
+  file: fiscalite-de-lentreprise-02.webp
+  path: /images/banque/fiscalite-de-lentreprise-02.webp
+  categories:
+  - fiscalite-de-lentreprise
+  tags:
+  - impot
+  - tva
+  - declaration
+  - fiscalite
+  alt_fr: Facade en pierre blanche d'un batiment institutionnel francais, vue en contre-plongee
+  alt_en: White stone facade of a French institutional building seen from below
+  alt_source_en: low angle photography of white concrete building
+  credit: Photo de Francais a Londres sur Unsplash
+  source_url: https://unsplash.com/photos/low-angle-photography-of-white-concrete-building-ZlJBqvnAti8
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:7247407
+  file: fiscalite-de-lentreprise-03.webp
+  path: /images/banque/fiscalite-de-lentreprise-03.webp
+  categories:
+  - fiscalite-de-lentreprise
+  tags:
+  - impot
+  - tva
+  - declaration
+  - fiscalite
+  alt_fr: Personne prenant des notes dans un carnet, entouree de formulaires, de lunettes et d'une calculatrice
+  alt_en: Person taking notes in a notebook surrounded by forms, glasses and a calculator
+  alt_source_en: Close-up of a person writing in a notebook with documents and a calculator, managing
+    finances.
+  credit: Photo de Leeloo The First sur Pexels
+  source_url: https://www.pexels.com/photo/person-writing-on-white-paper-7247407/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:27358606
+  file: fiscalite-de-lentreprise-04.webp
+  path: /images/banque/fiscalite-de-lentreprise-04.webp
+  categories:
+  - fiscalite-de-lentreprise
+  tags:
+  - impot
+  - tva
+  - declaration
+  - fiscalite
+  alt_fr: ''
+  alt_en: ''
+  alt_source_en: A majestic riverfront building captured on a sunny day with clear blue skies.
+  credit: Photo de Виктор Соломоник sur Pexels
+  source_url: https://www.pexels.com/photo/27358606/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:7821684
+  file: fiscalite-de-lentreprise-05.webp
+  path: /images/banque/fiscalite-de-lentreprise-05.webp
+  categories:
+  - fiscalite-de-lentreprise
+  tags:
+  - impot
+  - tva
+  - declaration
+  - fiscalite
+  alt_fr: Deux personnes se passant des documents chiffres au-dessus d'un bureau, calculatrice a cote
+  alt_en: Two people handing over numbered documents across a desk, a calculator beside them
+  alt_source_en: Two professionals exchanging documents in an office setting, focusing on paperwork and
+    data analysis.
+  credit: Photo de RDNE Stock project sur Pexels
+  source_url: https://www.pexels.com/photo/handing-out-of-documents-7821684/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:7821686
+  file: fiscalite-de-lentreprise-06.webp
+  path: /images/banque/fiscalite-de-lentreprise-06.webp
+  categories:
+  - fiscalite-de-lentreprise
+  tags:
+  - impot
+  - tva
+  - declaration
+  - fiscalite
+  alt_fr: ''
+  alt_en: ''
+  alt_source_en: Person filling out a tax questionnaire with a pen, showing close-up on wooden table.
+  credit: Photo de RDNE Stock project sur Pexels
+  source_url: https://www.pexels.com/photo/close-up-shot-of-a-person-filling-out-a-questionnaire-7821686/
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:M98NRBuzbpc
+  file: fiscalite-de-lentreprise-07.webp
+  path: /images/banque/fiscalite-de-lentreprise-07.webp
+  categories:
+  - fiscalite-de-lentreprise
+  tags:
+  - impot
+  - tva
+  - declaration
+  - fiscalite
+  alt_fr: ''
+  alt_en: ''
+  alt_source_en: black Android smartphone near ballpoint pen, tax withholding certificate on top of white
+    folder
+  credit: Photo de Kelly Sikkema sur Unsplash
+  source_url: https://unsplash.com/photos/black-android-smartphone-near-ballpoint-pen-tax-withholding-certificate-on-top-of-white-folder-M98NRBuzbpc
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:7821564
+  file: fiscalite-de-lentreprise-08.webp
+  path: /images/banque/fiscalite-de-lentreprise-08.webp
+  categories:
+  - fiscalite-de-lentreprise
+  tags:
+  - impot
+  - tva
+  - declaration
+  - fiscalite
+  alt_fr: ''
+  alt_en: ''
+  alt_source_en: A close-up of a W-9 tax form placed on a wooden desk, emphasizing paperwork and finance.
+  credit: Photo de RDNE Stock project sur Pexels
+  source_url: https://www.pexels.com/photo/close-up-photo-of-a-document-7821564/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:6694543
+  file: paie-et-social-01.webp
+  path: /images/banque/paie-et-social-01.webp
+  categories:
+  - paie-et-social
+  tags:
+  - paie
+  - salaire
+  - social
+  - urssaf
+  alt_fr: ''
+  alt_en: ''
+  alt_source_en: A desk with financial documents, currency, a laptop, and phone calculator.
+  credit: Photo de Tima Miroshnichenko sur Pexels
+  source_url: https://www.pexels.com/photo/banknotes-and-calculator-on-table-6694543/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:8872622
+  file: paie-et-social-02.webp
+  path: /images/banque/paie-et-social-02.webp
+  categories:
+  - paie-et-social
+  tags:
+  - paie
+  - salaire
+  - social
+  - urssaf
+  alt_fr: ''
+  alt_en: ''
+  alt_source_en: Close-up of an office desk with tax documents, coins, glasses, and an old phone, symbolizing
+    finance and organization.
+  credit: Photo de MART  PRODUCTION sur Pexels
+  source_url: https://www.pexels.com/photo/money-on-wooden-table-8872622/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:6803520
+  file: paie-et-social-03.webp
+  path: /images/banque/paie-et-social-03.webp
+  categories:
+  - paie-et-social
+  tags:
+  - paie
+  - salaire
+  - social
+  - urssaf
+  alt_fr: Homme presentant une courbe sur un paperboard devant deux collegues assis dans un bureau
+  alt_en: Man presenting a curve on a flipchart to two colleagues sitting in an office
+  alt_source_en: Business meeting with a presentation on growth charts in a contemporary office setting.
+  credit: Photo de cottonbro studio sur Pexels
+  source_url: https://www.pexels.com/photo/men-having-a-meeting-in-a-modern-office-and-looking-at-a-whiteboard-6803520/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:7652176
+  file: paie-et-social-04.webp
+  path: /images/banque/paie-et-social-04.webp
+  categories:
+  - paie-et-social
+  tags:
+  - paie
+  - salaire
+  - social
+  - urssaf
+  alt_fr: Quatre collegues en reunion autour d'une table, un ordinateur portable ouvert entre eux
+  alt_en: Four colleagues in a meeting around a table with an open laptop between them
+  alt_source_en: A group of colleagues engaged in a business meeting discussing plans around a laptop
+    in a modern office.
+  credit: Photo de Thirdman sur Pexels
+  source_url: https://www.pexels.com/photo/a-group-of-people-having-a-meeting-in-the-office-7652176/
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:6FtD8hXC91c
+  file: paie-et-social-05.webp
+  path: /images/banque/paie-et-social-05.webp
+  categories:
+  - paie-et-social
+  tags:
+  - paie
+  - salaire
+  - social
+  - urssaf
+  alt_fr: Un collegue explique quelque chose a une personne assise devant un ordinateur portable
+  alt_en: A colleague explaining something to a person sitting in front of a laptop
+  alt_source_en: a man sitting at a desk shaking hands with another man
+  credit: Photo de Priscilla Du Preez 🇨🇦 sur Unsplash
+  source_url: https://unsplash.com/photos/a-man-sitting-at-a-desk-shaking-hands-with-another-man-6FtD8hXC91c
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:tKUKEIWFMsc
+  file: paie-et-social-06.webp
+  path: /images/banque/paie-et-social-06.webp
+  categories:
+  - paie-et-social
+  tags:
+  - paie
+  - salaire
+  - social
+  - urssaf
+  alt_fr: Deux collegues discutant a un bureau, l'un tourne vers l'autre devant un ordinateur
+  alt_en: Two colleagues talking at a desk, one turned towards the other in front of a computer
+  alt_source_en: a man sitting in front of a laptop computer
+  credit: Photo de Priscilla Du Preez 🇨🇦 sur Unsplash
+  source_url: https://unsplash.com/photos/a-man-sitting-in-front-of-a-laptop-computer-tKUKEIWFMsc
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:5922677
+  file: paie-et-social-07.webp
+  path: /images/banque/paie-et-social-07.webp
+  categories:
+  - paie-et-social
+  tags:
+  - paie
+  - salaire
+  - social
+  - urssaf
+  alt_fr: Equipe de cinq personnes penchees sur des documents imprimes autour d'une grande table en bois
+  alt_en: Team of five people leaning over printed documents around a large wooden table
+  alt_source_en: A diverse group of professionals brainstorming at a modern office table.
+  credit: Photo de RDNE Stock project sur Pexels
+  source_url: https://www.pexels.com/photo/people-in-a-meeting-discussing-documents-5922677/
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:r-W9R70iY5c
+  file: paie-et-social-08.webp
+  path: /images/banque/paie-et-social-08.webp
+  categories:
+  - paie-et-social
+  tags:
+  - paie
+  - salaire
+  - social
+  - urssaf
+  alt_fr: Deux femmes discutant de part et d'autre d'un bureau, un ordinateur portable entre elles
+  alt_en: Two women talking on either side of a desk with a laptop between them
+  alt_source_en: Two women are having a friendly discussion
+  credit: Photo de Vitaly Gariev sur Unsplash
+  source_url: https://unsplash.com/photos/two-women-are-having-a-friendly-discussion-r-W9R70iY5c
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:8297031
+  file: paie-et-social-09.webp
+  path: /images/banque/paie-et-social-09.webp
+  categories:
+  - paie-et-social
+  tags:
+  - paie
+  - salaire
+  - social
+  - urssaf
+  alt_fr: Femme remplissant un formulaire au stylo, calculatrice en main, sur une pile de classeurs
+  alt_en: Woman filling in a form with a pen, calculator in hand, on a stack of binders
+  alt_source_en: Close-up of person using a calculator with financial documents in an office.
+  credit: Photo de Mikhail Nilov sur Pexels
+  source_url: https://www.pexels.com/photo/person-in-long-sleeve-shirt-holding-a-calculator-8297031/
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:dQyS2pMYtok
+  file: gerer-son-entreprise-01.webp
+  path: /images/banque/gerer-son-entreprise-01.webp
+  categories:
+  - gerer-son-entreprise
+  tags:
+  - gestion
+  - tresorerie
+  - pilotage
+  - equipe
+  alt_fr: Commercante encaissant une cliente au comptoir de sa boutique, terminal de paiement sur le plan
+  alt_en: Shop owner taking payment from a customer at her counter, card terminal on the top
+  alt_source_en: A woman paying at a counter in a plant-filled shop with a smiling clerk
+  credit: Photo de Christiann Koepke sur Unsplash
+  source_url: https://unsplash.com/photos/woman-paying-at-shop-counter-dQyS2pMYtok
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:dU3KJqyYlO0
+  file: gerer-son-entreprise-02.webp
+  path: /images/banque/gerer-son-entreprise-02.webp
+  categories:
+  - gerer-son-entreprise
+  tags:
+  - gestion
+  - tresorerie
+  - pilotage
+  - equipe
+  alt_fr: Deux commercants en tablier, bras croises, poses dans leur etablissement
+  alt_en: Two shopkeepers in aprons, arms crossed, standing in their business
+  alt_source_en: Two cafe owners proudly stand together
+  credit: Photo de Vitaly Gariev sur Unsplash
+  source_url: https://unsplash.com/photos/two-cafe-owners-proudly-stand-together-dU3KJqyYlO0
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:3906984
+  file: gerer-son-entreprise-03.webp
+  path: /images/banque/gerer-son-entreprise-03.webp
+  categories:
+  - gerer-son-entreprise
+  tags:
+  - gestion
+  - tresorerie
+  - pilotage
+  - equipe
+  alt_fr: Employee en tablier souriante dans une boutique de cafe, presentoirs en arriere-plan
+  alt_en: Smiling employee in an apron in a coffee shop, display shelves behind her
+  alt_source_en: Smiling barista standing in a stylish café, showcasing entrepreneurial spirit.
+  credit: Photo de Andrea Piacquadio sur Pexels
+  source_url: https://www.pexels.com/photo/woman-wearing-an-apron-standing-by-the-shelves-3906984/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:10375820
+  file: gerer-son-entreprise-04.webp
+  path: /images/banque/gerer-son-entreprise-04.webp
+  categories:
+  - gerer-son-entreprise
+  tags:
+  - gestion
+  - tresorerie
+  - pilotage
+  - equipe
+  alt_fr: ''
+  alt_en: ''
+  alt_source_en: A cheerful businesswoman leaning out of her café window, showcasing a black-owned business
+    with vibrant flowers and decor.
+  credit: Photo de RDNE Stock project sur Pexels
+  source_url: https://www.pexels.com/photo/smiling-woman-at-cafe-window-10375820/
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:pypeCEaJeZY
+  file: gerer-son-entreprise-05.webp
+  path: /images/banque/gerer-son-entreprise-05.webp
+  categories:
+  - gerer-son-entreprise
+  tags:
+  - gestion
+  - tresorerie
+  - pilotage
+  - equipe
+  alt_fr: Personne consultant un tableau de bord de statistiques sur un ordinateur portable
+  alt_en: Person reviewing a statistics dashboard on a laptop
+  alt_source_en: person using MacBook Pro
+  credit: Photo de Campaign Creators sur Unsplash
+  source_url: https://unsplash.com/photos/person-using-macbook-pro-pypeCEaJeZY
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:vnppvekjH6o
+  file: gerer-son-entreprise-06.webp
+  path: /images/banque/gerer-son-entreprise-06.webp
+  categories:
+  - gerer-son-entreprise
+  tags:
+  - gestion
+  - tresorerie
+  - pilotage
+  - equipe
+  alt_fr: Portrait d'une femme souriante dans un bureau aux cloisons vitrees
+  alt_en: Portrait of a smiling woman in an office with glass partitions
+  alt_source_en: A smiling blonde woman in a white shirt indoors
+  credit: Photo de Vitaly Gariev sur Unsplash
+  source_url: https://unsplash.com/photos/a-smiling-blonde-woman-in-a-white-shirt-indoors-vnppvekjH6o
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:8276185
+  file: gerer-son-entreprise-07.webp
+  path: /images/banque/gerer-son-entreprise-07.webp
+  categories:
+  - gerer-son-entreprise
+  tags:
+  - gestion
+  - tresorerie
+  - pilotage
+  - equipe
+  alt_fr: Trois collegues en reunion autour d'une table en bois, l'un deplacant un panneau
+  alt_en: Three colleagues meeting around a wooden table, one moving a board
+  alt_source_en: Three men discussing a project at a table in a bright office setting.
+  credit: Photo de PNW Production sur Pexels
+  source_url: https://www.pexels.com/photo/men-having-a-business-meeting-at-the-office-8276185/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:5256524
+  file: gerer-son-entreprise-08.webp
+  path: /images/banque/gerer-son-entreprise-08.webp
+  categories:
+  - gerer-son-entreprise
+  tags:
+  - gestion
+  - tresorerie
+  - pilotage
+  - equipe
+  alt_fr: 'Reunion vue de dessus : cinq personnes autour d''une table, documents et ordinateur portable'
+  alt_en: 'Meeting seen from above: five people around a table with documents and a laptop'
+  alt_source_en: Group of diverse professionals collaborating in a modern office setting.
+  credit: Photo de Thirdman sur Pexels
+  source_url: https://www.pexels.com/photo/a-man-writing-on-paper-while-having-a-meeting-with-his-colleagues-5256524/
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:vII6p2iiC2g
+  file: fiscalite-des-particuliers-01.webp
+  path: /images/banque/fiscalite-des-particuliers-01.webp
+  categories:
+  - fiscalite-des-particuliers
+  tags:
+  - immobilier
+  - location
+  - revenus
+  - patrimoine
+  alt_fr: Cle de maison suspendue au-dessus de billets en euros roules dans une maquette de maison
+  alt_en: House key hanging above euro notes rolled into a model house
+  alt_source_en: A house hanging from a string on top of a pile of money
+  credit: Photo de Jakub Żerdzicki sur Unsplash
+  source_url: https://unsplash.com/photos/a-house-hanging-from-a-string-on-top-of-a-pile-of-money-vII6p2iiC2g
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:12955837
+  file: fiscalite-des-particuliers-02.webp
+  path: /images/banque/fiscalite-des-particuliers-02.webp
+  categories:
+  - fiscalite-des-particuliers
+  tags:
+  - immobilier
+  - location
+  - revenus
+  - patrimoine
+  alt_fr: Maquette de maison en bois et trousseau de cles poses sur un document, fond bleu
+  alt_en: Wooden model house and a set of keys on a document against a blue background
+  alt_source_en: Miniature wooden house with keys and contract symbolizing real estate transactions.
+  credit: Photo de Atlantic Ambience sur Pexels
+  source_url: https://www.pexels.com/photo/wooden-house-moder-keys-and-contract-on-table-12955837/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:7937684
+  file: fiscalite-des-particuliers-03.webp
+  path: /images/banque/fiscalite-des-particuliers-03.webp
+  categories:
+  - fiscalite-des-particuliers
+  tags:
+  - immobilier
+  - location
+  - revenus
+  - patrimoine
+  alt_fr: Femme en tailleur tenant un porte-documents et un trousseau avec un porte-cles en forme de maison
+  alt_en: Woman in a suit holding a folder and keys with a house-shaped keyring
+  alt_source_en: Close-up of a realtor holding a keychain and clipboard with interior office background.
+  credit: Photo de Pavel Danilyuk sur Pexels
+  source_url: https://www.pexels.com/photo/close-up-shot-of-keychain-on-person-s-hand-7937684/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:33866935
+  file: fiscalite-des-particuliers-04.webp
+  path: /images/banque/fiscalite-des-particuliers-04.webp
+  categories:
+  - fiscalite-des-particuliers
+  tags:
+  - immobilier
+  - location
+  - revenus
+  - patrimoine
+  alt_fr: ''
+  alt_en: ''
+  alt_source_en: Miniature houses above letters spelling 'RENT' on a blue background, ideal for real estate
+    themes.
+  credit: Photo de Steppe Walker sur Pexels
+  source_url: https://www.pexels.com/photo/house-rental-concept-with-miniature-homes-33866935/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:15508726
+  file: fiscalite-des-particuliers-05.webp
+  path: /images/banque/fiscalite-des-particuliers-05.webp
+  categories:
+  - fiscalite-des-particuliers
+  tags:
+  - immobilier
+  - location
+  - revenus
+  - patrimoine
+  alt_fr: Facade d'immeuble d'habitation avec balcons et claustras ajoures
+  alt_en: Facade of an apartment building with balconies and perforated screens
+  alt_source_en: Detailed facade of a modern apartment building with decorative design in Montpellier,
+    France.
+  credit: Photo de Jan van der Wolf sur Pexels
+  source_url: https://www.pexels.com/photo/modern-design-on-building-balconies-15508726/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:6329025
+  file: fiscalite-des-particuliers-06.webp
+  path: /images/banque/fiscalite-des-particuliers-06.webp
+  categories:
+  - fiscalite-des-particuliers
+  tags:
+  - immobilier
+  - location
+  - revenus
+  - patrimoine
+  alt_fr: Homme ecrivant dans un carnet sur une table basse, billets et pieces a cote de lui
+  alt_en: Man writing in a notebook at a coffee table, notes and coins beside him
+  alt_source_en: A man sits at a table writing in a notebook, managing finances and budgeting.
+  credit: Photo de kaboompics.com sur Pexels
+  source_url: https://www.pexels.com/photo/man-in-white-and-gray-striped-long-sleeve-shirt-sitting-at-the-table-6329025/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:7680745
+  file: fiscalite-des-particuliers-07.webp
+  path: /images/banque/fiscalite-des-particuliers-07.webp
+  categories:
+  - fiscalite-des-particuliers
+  tags:
+  - immobilier
+  - location
+  - revenus
+  - patrimoine
+  alt_fr: Femme faisant ses comptes avec une calculatrice, entouree de justificatifs et de courriers
+  alt_en: Woman doing her accounts with a calculator, surrounded by receipts and letters
+  alt_source_en: Woman writing with calculator on desk, managing finances indoors.
+  credit: Photo de kaboompics.com sur Pexels
+  source_url: https://www.pexels.com/photo/a-woman-writing-on-a-sticky-note-7680745/
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:JaoVGh5aJ3E
+  file: expert-comptable-et-metiers-01.webp
+  path: /images/banque/expert-comptable-et-metiers-01.webp
+  categories:
+  - expert-comptable-et-metiers
+  tags:
+  - conseil
+  - expert
+  - rendez-vous
+  - accompagnement
+  alt_fr: Deux femmes en rendez-vous de travail autour d'un ordinateur portable et d'un bloc-notes
+  alt_en: Two women in a work meeting around a laptop and a notepad
+  alt_source_en: woman in teal t-shirt sitting beside woman in suit jacket
+  credit: Photo de Amy Hirschi sur Unsplash
+  source_url: https://unsplash.com/photos/woman-in-teal-t-shirt-sitting-beside-woman-in-suit-jacket-JaoVGh5aJ3E
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:7821681
+  file: expert-comptable-et-metiers-02.webp
+  path: /images/banque/expert-comptable-et-metiers-02.webp
+  categories:
+  - expert-comptable-et-metiers
+  tags:
+  - conseil
+  - expert
+  - rendez-vous
+  - accompagnement
+  alt_fr: Conseiller en costume presentant un document chiffre a un client attentif
+  alt_en: Adviser in a suit showing a document with figures to an attentive client
+  alt_source_en: Man in office, appearing stressed during paperwork discussion, sitting opposite professional.
+  credit: Photo de RDNE Stock project sur Pexels
+  source_url: https://www.pexels.com/photo/men-sitting-at-the-table-7821681/
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:1H1LBKvD7ew
+  file: expert-comptable-et-metiers-03.webp
+  path: /images/banque/expert-comptable-et-metiers-03.webp
+  categories:
+  - expert-comptable-et-metiers
+  tags:
+  - conseil
+  - expert
+  - rendez-vous
+  - accompagnement
+  alt_fr: Homme en costume, stylo en main, recevant un document d'une collaboratrice
+  alt_en: Man in a suit, pen in hand, receiving a document from a colleague
+  alt_source_en: a man and a woman sitting at a white table
+  credit: Photo de Carrie Allen www.carrieallen.com sur Unsplash
+  source_url: https://unsplash.com/photos/a-man-and-a-woman-sitting-at-a-white-table-1H1LBKvD7ew
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:iPheGw7_UaI
+  file: expert-comptable-et-metiers-04.webp
+  path: /images/banque/expert-comptable-et-metiers-04.webp
+  categories:
+  - expert-comptable-et-metiers
+  tags:
+  - conseil
+  - expert
+  - rendez-vous
+  - accompagnement
+  alt_fr: Trois personnes en tenue de bureau autour d'une table, l'une signant un document
+  alt_en: Three people in business clothes around a table, one signing a document
+  alt_source_en: Business people signing a contract at a table
+  credit: Photo de Vitaly Gariev sur Unsplash
+  source_url: https://unsplash.com/photos/business-people-signing-a-contract-at-a-table-iPheGw7_UaI
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:eGI0aGwuE-A
+  file: expert-comptable-et-metiers-05.webp
+  path: /images/banque/expert-comptable-et-metiers-05.webp
+  categories:
+  - expert-comptable-et-metiers
+  tags:
+  - conseil
+  - expert
+  - rendez-vous
+  - accompagnement
+  alt_fr: ''
+  alt_en: ''
+  alt_source_en: a person pointing at a calculator on a desk
+  credit: Photo de Jakub Żerdzicki sur Unsplash
+  source_url: https://unsplash.com/photos/a-person-pointing-at-a-calculator-on-a-desk-eGI0aGwuE-A
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:EVX9pt2dD1o
+  file: expert-comptable-et-metiers-06.webp
+  path: /images/banque/expert-comptable-et-metiers-06.webp
+  categories:
+  - expert-comptable-et-metiers
+  tags:
+  - conseil
+  - expert
+  - rendez-vous
+  - accompagnement
+  alt_fr: Professionnel de sante en blouse blanche en teleconsultation devant son ordinateur portable
+  alt_en: Healthcare professional in a white coat on a video consultation at their laptop
+  alt_source_en: Doctor consulting patient via video call on laptop
+  credit: Photo de Vitaly Gariev sur Unsplash
+  source_url: https://unsplash.com/photos/doctor-consulting-patient-via-video-call-on-laptop-EVX9pt2dD1o
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:7144256
+  file: expert-comptable-et-metiers-07.webp
+  path: /images/banque/expert-comptable-et-metiers-07.webp
+  categories:
+  - expert-comptable-et-metiers
+  tags:
+  - conseil
+  - expert
+  - rendez-vous
+  - accompagnement
+  alt_fr: Conseiller souriant en rendez-vous avec un client dans un bureau lumineux
+  alt_en: Smiling adviser meeting a client in a bright office
+  alt_source_en: Two businessmen having a conversation in a modern office setting.
+  credit: Photo de Antoni Shkraba sur Pexels
+  source_url: https://www.pexels.com/photo/businessman-talking-with-client-7144256/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:6170862
+  file: expert-comptable-et-metiers-08.webp
+  path: /images/banque/expert-comptable-et-metiers-08.webp
+  categories:
+  - expert-comptable-et-metiers
+  tags:
+  - conseil
+  - expert
+  - rendez-vous
+  - accompagnement
+  alt_fr: Deux femmes annotant des documents dans un bureau, bibliotheque d'ouvrages en arriere-plan
+  alt_en: Two women annotating documents in an office, a bookcase of volumes behind them
+  alt_source_en: Two professional women collaborating in a modern office setting, discussing documents.
+  credit: Photo de RDNE Stock project sur Pexels
+  source_url: https://www.pexels.com/photo/female-leaders-having-a-discussion-6170862/
+  added: '2026-09-18'
+  used_by: []
+- id: pexels:7821907
+  file: expert-comptable-et-metiers-09.webp
+  path: /images/banque/expert-comptable-et-metiers-09.webp
+  categories:
+  - expert-comptable-et-metiers
+  tags:
+  - conseil
+  - expert
+  - rendez-vous
+  - accompagnement
+  alt_fr: Conseillere souriante et client face a face autour de documents et d'un ordinateur portable
+  alt_en: Smiling adviser and client facing each other over documents and a laptop
+  alt_source_en: Smiling professionals discussing business documents at modern office table.
+  credit: Photo de RDNE Stock project sur Pexels
+  source_url: https://www.pexels.com/photo/woman-in-black-and-white-long-sleeve-shirt-sitting-beside-man-in-white-long-sleeve-shirt-7821907/
+  added: '2026-09-18'
+  used_by: []
+- id: unsplash:omGSZqBXkqY
+  file: expert-comptable-et-metiers-10.webp
+  path: /images/banque/expert-comptable-et-metiers-10.webp
+  categories:
+  - expert-comptable-et-metiers
+  tags:
+  - conseil
+  - expert
+  - rendez-vous
+  - accompagnement
+  alt_fr: Trois professionnels en reunion autour d'une table basse dans un hall vitre
+  alt_en: Three professionals meeting around a low table in a glass-walled lobby
+  alt_source_en: a group of people sitting around a table
+  credit: Photo de Vitaly Gariev sur Unsplash
+  source_url: https://unsplash.com/photos/a-group-of-people-sitting-around-a-table-omGSZqBXkqY
+  added: '2026-09-18'
+  used_by: []

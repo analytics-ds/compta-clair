@@ -1,0 +1,99 @@
+{{ define "main" }}
+{{/* .Site.Language.Lang non fiable sur ce site (voir header.html) */}}
+{{ $lang := "fr" }}
+{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+{{ $authorId := .Params.authorId }}
+{{ $a := index .Site.Data.authors $authorId }}
+{{/* .Site.RegularPages/.Site.GetPage("blog") sont peu fiables en langue non par defaut sur ce
+     site : on reconstitue $blogPages depuis le registre statique data/articles.yaml. */}}
+{{ $blogPages := slice }}
+{{ range .Site.Data.articles }}
+    {{ $artSlug := cond (eq $lang "en") .slug_en .slug_fr }}
+    {{ $artPath := cond (eq $lang "en") (printf "en/blog/%s" $artSlug) (printf "blog/%s" $artSlug) }}
+    {{ with $.Site.GetPage $artPath }}{{ $blogPages = $blogPages | append . }}{{ end }}
+{{ end }}
+{{ $articles := slice }}
+{{ range $blogPages }}
+    {{ if eq .Params.author $authorId }}
+        {{ $articles = $articles | append . }}
+    {{ end }}
+{{ end }}
+{{ $articles = sort $articles "Date" "desc" }}
+
+<div class="container" style="padding-top: var(--space-md);">
+    <nav class="breadcrumb" aria-label="{{ if eq $lang "en" }}Breadcrumb{{ else }}Fil d'Ariane{{ end }}">
+        <ol class="breadcrumb-list">
+            <li class="breadcrumb-item">
+                <a href="{{ (cond (eq $lang "en") "/en/" "/") | relURL }}">{{ if eq $lang "en" }}Home{{ else }}Accueil{{ end }}</a>
+                <svg class="breadcrumb-sep" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 4 10 8 6 12" /></svg>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="{{ (cond (eq $lang "en") "/en/authors/" "/auteurs/") | relURL }}">{{ if eq $lang "en" }}Authors{{ else }}Auteurs{{ end }}</a>
+                <svg class="breadcrumb-sep" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 4 10 8 6 12" /></svg>
+            </li>
+            <li class="breadcrumb-item"><span aria-current="page">{{ .Title }}</span></li>
+        </ol>
+    </nav>
+</div>
+
+{{ with $a }}
+<header class="author-page-header">
+    <div class="container">
+        <div class="author-page-header-inner">
+            {{ with .avatar }}
+            <img src="{{ . | relURL }}" alt="{{ $a.name }}" class="author-page-avatar" width="120" height="120" loading="eager">
+            {{ else }}
+            <div class="author-page-avatar author-avatar-placeholder" aria-hidden="true">{{ slicestr .name 0 1 }}</div>
+            {{ end }}
+            <div>
+                <h1 class="author-page-name">{{ .name }}</h1>
+                {{ with index .role $lang }}<span class="author-page-role">{{ . }}</span>{{ end }}
+                {{ with .linkedinUrl }}
+                <a href="{{ . }}" class="author-page-linkedin" rel="nofollow noopener" target="_blank">LinkedIn →</a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="author-page-content">
+    <div class="container">
+        {{ with index .bio $lang }}
+        <p class="author-page-bio">{{ . }}</p>
+        {{ end }}
+
+        {{ with .expertise }}
+        <div class="author-page-expertise">
+            {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
+        </div>
+        {{ end }}
+
+        <h2 class="section-title" style="text-align:left; margin-bottom: var(--space-md);">
+            {{ if eq $lang "en" }}Articles by {{ $a.name }}{{ else }}Articles de {{ $a.name }}{{ end }}
+        </h2>
+        <div class="grid-articles">
+            {{ range $articles }}
+            <article class="article-card">
+                <a href="{{ .RelPermalink }}" class="article-card-image-wrapper" aria-label="{{ .Title }}">
+                    {{ if .Params.image }}
+                    <img src="{{ .Params.image | relURL }}" alt="{{ .Params.imageAlt | default .Title }}" class="article-card-image" loading="lazy" width="600" height="400">
+                    {{ else }}
+                    <span class="article-card-image article-card-image-placeholder" aria-hidden="true">{{ slicestr .Title 0 1 }}</span>
+                    {{ end }}
+                </a>
+                <div class="article-card-body">
+                    <div class="article-meta">
+                        {{ with .Params.categories }}<span class="article-category">{{ index . 0 }}</span>{{ end }}
+                        <time>{{ .Date.Format "2 January 2006" }}</time>
+                    </div>
+                    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                    <p>{{ .Description }}</p>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}
+
+{{ end }}

@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{ $lang := "fr" }}
+{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+
+<section class="error-page">
+    <div class="container">
+        <span class="error-code">404</span>
+        <h1>{{ if eq $lang "en" }}Page not found{{ else }}Page introuvable{{ end }}</h1>
+        <p>{{ if eq $lang "en" }}The page you are looking for does not exist or has been moved.{{ else }}La page que vous recherchez n'existe pas ou a été déplacée.{{ end }}</p>
+        <div class="error-links">
+            <a href="{{ "/" | relURL }}" class="btn-primary">{{ if eq $lang "en" }}Back to home{{ else }}Retour à l'accueil{{ end }}</a>
+            <a href="{{ "blog/" | relURL }}" class="btn-outline">{{ if eq $lang "en" }}View articles{{ else }}Voir les articles{{ end }}</a>
+        </div>
+    </div>
+</section>
+
+{{ end }}

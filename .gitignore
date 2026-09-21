@@ -1,0 +1,11 @@
+public/
+resources/
+.hugo_build.lock
+.DS_Store
+.image-bank-tmp/
+.deploy/
+__pycache__/
+
+# Documents de cadrage internes : restent sur le Drive, jamais sur GitHub.
+CAHIER-DES-CHARGES.md
+.claude/leak-terms.txt

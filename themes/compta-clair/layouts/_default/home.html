@@ -1,0 +1,169 @@
+{{ define "main" }}
+{{/* .Site.Language.Lang non fiable sur ce site (voir header.html) */}}
+{{ $lang := "fr" }}
+{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+{{ $pastels := slice "var(--cat-1)" "var(--cat-2)" "var(--cat-3)" "var(--cat-4)" "var(--cat-5)" "var(--cat-6)" "var(--cat-7)" "var(--cat-8)" "var(--cat-9)" }}
+{{/* BUG CONNU ET CIRCONSCRIT (voir MEMORY.md) : .Site.GetPage (et toute autre resolution
+     cross-page : .Site.RegularPages, .Site.Sections, .Translations) renvoie systematiquement NIL/
+     vide sur ce site des qu'elle est appelee depuis la page Kind=="home" de la langue non par
+     defaut ("en"), meme avec un chemin de contenu explicite qui fonctionne a l'identique depuis
+     n'importe quelle AUTRE page (categories, auteurs, articles - tous corriges et verifies OK via
+     data/articles.yaml). C'est le seul point du site encore touche. Consequence assumee :
+     "Derniers articles", "Les essentiels" et le compte d'articles par categorie ne s'affichent
+     que sur / (FR), pas sur /en/ (page vide degradee proprement via {{ if $blogPages }}
+     plus bas). Ne pas re-simplifier ce contournement sans relire l'historique de debug associe. */}}
+{{ $blogPages := slice }}
+{{ range .Site.Data.articles }}
+    {{ $artSlug := cond (eq $lang "en") .slug_en .slug_fr }}
+    {{ $artPath := cond (eq $lang "en") (printf "en/blog/%s" $artSlug) (printf "blog/%s" $artSlug) }}
+    {{ with $.Site.GetPage $artPath }}{{ $blogPages = $blogPages | append . }}{{ end }}
+{{ end }}
+{{ $blogPages = sort $blogPages "Date" "desc" }}
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content container-narrow">
+        <span class="hero-badge">{{ if eq $lang "en" }}Independent editorial guide{{ else }}Média indépendant{{ end }}</span>
+        {{ if eq $lang "en" }}
+        <h1>Accounting and business, explained <mark class="highlight">clearly</mark></h1>
+        <p class="hero-description">Practical, sourced guides on French accounting, taxation and business creation — for founders, small business owners, freelancers and individuals.</p>
+        {{ else }}
+        <h1>La comptabilité expliquée <mark class="highlight">simplement</mark></h1>
+        <p class="hero-description">Des guides pratiques et sourcés sur la comptabilité, la fiscalité et la création d'entreprise, pour les créateurs, dirigeants de TPE, indépendants et particuliers.</p>
+        {{ end }}
+        <form class="hero-search-form" data-search-trigger role="search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" placeholder="{{ if eq $lang "en" }}Search a topic (e.g. SASU, VAT, payslip)…{{ else }}Rechercher un sujet (ex : SASU, TVA, fiche de paie)…{{ end }}">
+        </form>
+        <a href="{{ "blog/" | relURL }}" class="btn-primary">{{ if eq $lang "en" }}Explore the blog{{ else }}Explorez le blog{{ end }}</a>
+    </div>
+</section>
+
+{{ partial "category-quiz.html" . }}
+
+<!-- Categories Section -->
+<section class="categories-section">
+    <div class="container">
+        <h2 class="section-title">{{ if eq $lang "en" }}Our topics{{ else }}Nos thématiques{{ end }}</h2>
+        <div class="grid-categories">
+            {{ range $i, $c := .Site.Data.categories }}
+            {{ $slug := cond (eq $lang "en") $c.slug_en $c.slug_fr }}
+            {{ $catTitle := cond (eq $lang "en") $c.title_en $c.title_fr }}
+            {{ $catURL := printf "%scategories/%s/" (cond (eq $lang "en") "/en/" "/") $slug }}
+            {{ $count := 0 }}
+            {{ range $blogPages }}
+                {{ if eq (index .Params.categories 0) $catTitle }}
+                    {{ $count = add $count 1 }}
+                {{ end }}
+            {{ end }}
+            <a href="{{ $catURL | relURL }}" class="category-card">
+                <span class="category-pastille" style="background-color: {{ index $pastels (mod $i 9) }};" aria-hidden="true">{{ partial "category-icon.html" (dict "slug" $c.slug_fr) }}</span>
+                <span>
+                    <h3>{{ $catTitle }}</h3>
+                    <span class="category-count">{{ $count }} {{ if eq $lang "en" }}article{{ if gt $count 1 }}s{{ end }}{{ else }}article{{ if gt $count 1 }}s{{ end }}{{ end }}</span>
+                </span>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+<!-- Latest Articles Section -->
+{{ if $blogPages }}
+<section class="latest-section">
+    <div class="container">
+        <h2 class="section-title">{{ if eq $lang "en" }}Latest articles{{ else }}Derniers articles{{ end }}</h2>
+        <div class="grid-articles">
+            {{ range first 6 $blogPages }}
+            <article class="article-card">
+                <a href="{{ .RelPermalink }}" class="article-card-image-wrapper" aria-label="{{ .Title }}">
+                    {{ if .Params.image }}
+                    <img src="{{ .Params.image | relURL }}" alt="{{ .Params.imageAlt | default .Title }}" class="article-card-image" loading="lazy" width="600" height="400">
+                    {{ else }}
+                    <span class="article-card-image article-card-image-placeholder" aria-hidden="true">{{ slicestr .Title 0 1 }}</span>
+                    {{ end }}
+                    {{ if .Params.featured }}<span class="featured-badge">{{ if eq $lang "en" }}Essential{{ else }}Essentiel{{ end }}</span>{{ end }}
+                </a>
+                {{ $article := . }}
+                {{ $catURL := partial "category-url.html" (dict "page" $article "lang" $lang) }}
+                <div class="article-card-body">
+                    <div class="article-meta">
+                        {{ if $catURL }}
+                        <a href="{{ $catURL }}" class="article-category"><span class="category-dot" style="background-color: var(--accent);"></span>{{ index $article.Params.categories 0 }}</a>
+                        {{ end }}
+                        <time>{{ $article.Date.Format "2 January 2006" }}</time>
+                    </div>
+                    <h3><a href="{{ $article.RelPermalink }}">{{ $article.Title }}</a></h3>
+                    <p>{{ .Description }}</p>
+                    <a href="{{ .RelPermalink }}" class="read-more">{{ if eq $lang "en" }}Read more{{ else }}Lire la suite{{ end }}</a>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}
+
+<!-- Featured / essentiels Section -->
+{{ $featured := slice }}
+{{ range $blogPages }}
+    {{ if .Params.featured }}
+        {{ $featured = $featured | append . }}
+    {{ end }}
+{{ end }}
+{{ if $featured }}
+<section class="featured-section">
+    <div class="container">
+        <h2 class="section-title">{{ if eq $lang "en" }}Essential reads{{ else }}Les essentiels{{ end }}</h2>
+        <div class="grid-articles">
+            {{ range first 3 $featured }}
+            <article class="article-card">
+                <a href="{{ .RelPermalink }}" class="article-card-image-wrapper" aria-label="{{ .Title }}">
+                    {{ if .Params.image }}
+                    <img src="{{ .Params.image | relURL }}" alt="{{ .Params.imageAlt | default .Title }}" class="article-card-image" loading="lazy" width="600" height="400">
+                    {{ else }}
+                    <span class="article-card-image article-card-image-placeholder" aria-hidden="true">{{ slicestr .Title 0 1 }}</span>
+                    {{ end }}
+                    <span class="featured-badge">{{ if eq $lang "en" }}Essential{{ else }}Essentiel{{ end }}</span>
+                </a>
+                <div class="article-card-body">
+                    <div class="article-meta">
+                        {{ with .Params.categories }}
+                        <span class="article-category">{{ index . 0 }}</span>
+                        {{ end }}
+                    </div>
+                    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                    <p>{{ .Description }}</p>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}
+
+<!-- Bandeau auteurs -->
+<section class="authors-band">
+    <div class="container">
+        <h2 class="section-title">{{ if eq $lang "en" }}Written by{{ else }}Rédigé par{{ end }}</h2>
+        <div class="authors-band-list">
+            {{ $authorsPage := "" }}
+            {{ if eq $lang "en" }}{{ $authorsPage = "authors/" }}{{ else }}{{ $authorsPage = "auteurs/" }}{{ end }}
+            {{ range $id, $a := .Site.Data.authors }}
+            <a href="{{ printf "%s%s/" $authorsPage $id | relURL }}" class="authors-band-item">
+                {{ with $a.avatar }}
+                <img src="{{ . | relURL }}" alt="{{ $a.name }}" class="author-avatar" width="64" height="64" loading="lazy">
+                {{ else }}
+                <span class="author-avatar author-avatar-placeholder" aria-hidden="true">{{ slicestr $a.name 0 1 }}</span>
+                {{ end }}
+                <span>{{ $a.name }}</span>
+            </a>
+            {{ end }}
+        </div>
+        <p style="text-align:center; margin-top: 1.5rem;">
+            <a href="{{ (cond (eq $lang "en") "authors/" "auteurs/") | relURL }}" class="btn-outline">{{ if eq $lang "en" }}View all authors{{ else }}Voir tous les auteurs{{ end }}</a>
+        </p>
+    </div>
+</section>
+
+{{ end }}

@@ -1,0 +1,45 @@
+# Liste canonique des 9 categories du site.
+# Source unique statique : titre + slug par langue. Les templates transverses (accueil, footer,
+# plan du site, meta d'article, fil d'Ariane) lisent CE fichier plutot que de rappeler des pages
+# via .Site.GetPage ou la taxonomie categories : sur ce site multilingue (Hugo 0.139 a 0.166
+# testes), .Site.Taxonomies fusionne les langues de facon non deterministe, et .Site.GetPage /
+# .Site.Pages se sont aussi averes non fiables lorsqu'ils sont appeles depuis une AUTRE page que
+# celle de la categorie elle-meme (notamment vide cote EN). Seule content/categories/<slug>/_index.md
+# (rendue directement par layouts/categories/list.html, "." deja resolu par Hugo) reste la source
+# de verite pour l'intro et la FAQ de chaque categorie.
+- slug_fr: creer-son-entreprise
+  title_fr: "Créer son entreprise"
+  slug_en: starting-a-business
+  title_en: "Starting a business"
+- slug_fr: statuts-juridiques
+  title_fr: "Statuts juridiques"
+  slug_en: legal-structures
+  title_en: "Legal structures"
+- slug_fr: micro-entreprise
+  title_fr: "Micro-entreprise"
+  slug_en: micro-business
+  title_en: "Micro-business"
+- slug_fr: comptabilite
+  title_fr: "Comptabilité"
+  slug_en: accounting
+  title_en: "Accounting"
+- slug_fr: fiscalite-de-lentreprise
+  title_fr: "Fiscalité de l'entreprise"
+  slug_en: business-taxation
+  title_en: "Business taxation"
+- slug_fr: paie-et-social
+  title_fr: "Paie et social"
+  slug_en: payroll-and-social-charges
+  title_en: "Payroll and social charges"
+- slug_fr: gerer-son-entreprise
+  title_fr: "Gérer son entreprise"
+  slug_en: running-a-business
+  title_en: "Running a business"
+- slug_fr: fiscalite-des-particuliers
+  title_fr: "Fiscalité des particuliers"
+  slug_en: personal-taxation
+  title_en: "Personal taxation"
+- slug_fr: expert-comptable-et-metiers
+  title_fr: "Expert-comptable et métiers"
+  slug_en: accountants-and-professions
+  title_en: "Accountants and professions"
