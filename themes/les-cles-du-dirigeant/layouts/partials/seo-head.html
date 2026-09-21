@@ -101,8 +101,12 @@
 {{ end }}
 
 <!-- Favicon -->
+<!-- .ico en premier : la Search Console, les apercus de partage et les agregateurs vont le
+     chercher a la racine par convention et ignorent le SVG. -->
+<link rel="icon" href="{{ "favicon.ico" | relURL }}" sizes="any">
 <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
+<link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
 
 <!-- JSON-LD Schema.org : Organization (toutes les pages, avec @id) -->
 <script type="application/ld+json">
