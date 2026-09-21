@@ -7,6 +7,6 @@ description: "Contact the editorial team of Les Clés du Dirigeant by email."
 
 For any question, suggestion, or to report an error in an article, contact the editorial team by email:
 
-**redaction@compta-clair.fr**
+**redaction@les-cles-du-dirigeant.fr**
 
 We reply to messages within a few business days. This site does not use a contact form, to limit the collection of personal data.

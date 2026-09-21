@@ -6,4 +6,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://analytics-ds.github.io/compta-clair/sitemap.xml
+Sitemap: https://les-cles-du-dirigeant.fr/sitemap.xml

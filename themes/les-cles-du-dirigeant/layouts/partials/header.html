@@ -1,9 +1,10 @@
 {{/* .Site.Language.Lang renvoie parfois "fr" meme sur une page EN quand il est lu depuis un
      partial (bug constate, voir MEMORY.md) : la langue est donc deduite du permalien reel plutot
      que de .Site.Language.Lang. Le test retire d'abord le chemin de base du site
-     ("" | relURL) : tant que le site vit sous /compta-clair/, un permalien EN commence
-     par ce prefixe et jamais par "/en/", donc toutes les pages EN sortaient avec le
-     chrome francais (constate en ligne le 2026-09-21). .Site.Menus.main souffre du meme souci, le menu est donc reconstruit
+     ("" | relURL) avant de comparer. Sans ca, des que le site vit dans un sous-chemin
+     (c'etait le cas sur l'URL de preview GitHub Pages), le permalien EN commence par ce
+     prefixe et jamais par "/en/", et toutes les pages EN sortent avec le chrome francais
+     (constate en ligne le 2026-09-21). .Site.Menus.main souffre du meme souci, le menu est donc reconstruit
      a la main a partir de data/categories.yaml plutot que lu depuis .Site.Menus. */}}
 {{ $lang := "fr" }}
 {{ if strings.HasPrefix (strings.TrimPrefix ("" | relURL) .RelPermalink) "en/" }}{{ $lang = "en" }}{{ end }}

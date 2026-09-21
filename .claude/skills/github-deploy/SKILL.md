@@ -1,5 +1,5 @@
 ---
-description: Publie le site sur GitHub Pages (repo analytics-ds/compta-clair). Utiliser ce skill quand l'utilisateur demande de deployer, publier, push, ou mettre a jour le site en ligne.
+description: Publie le site sur GitHub Pages (repo analytics-ds/les-cles-du-dirigeant). Utiliser ce skill quand l'utilisateur demande de deployer, publier, push, ou mettre a jour le site en ligne.
 user_invocable: true
 ---
 
@@ -16,9 +16,9 @@ Contrairement au template de la factory, **on ne pousse jamais la source sur Git
 - Le dossier de travail (sur le Drive) n'est PAS un repo git. Il contient le cahier des charges,
   le CLAUDE.md, le MEMORY.md et les scripts : autant de documents qui expliquent noir sur blanc
   la nature du site et le client concerne.
-- Le seul repo git est `.deploy/`, un clone de `analytics-ds/compta-clair` (public) qui ne
+- Le seul repo git est `.deploy/`, un clone de `analytics-ds/les-cles-du-dirigeant` (public) qui ne
   contient **que le site construit** : HTML, CSS, images. Pas de CI, pas de GitHub Actions.
-- URL publique : https://analytics-ds.github.io/compta-clair/
+- URL publique : https://les-cles-du-dirigeant.fr/
 
 Ne jamais proposer de `git init` a la racine, ni de pousser la source « pour avoir le build
 automatique », ni de basculer le repo public sur la source. Si ce besoin se represente un jour,
@@ -52,7 +52,7 @@ Ne jamais contourner le garde-fou, ne jamais commiter depuis `.deploy/` a la mai
 ## Verifier apres coup
 
 ```bash
-curl -s -o /dev/null -w '%{http_code}\n' https://analytics-ds.github.io/compta-clair/
+curl -s -o /dev/null -w '%{http_code}\n' https://les-cles-du-dirigeant.fr/
 ```
 
 Afficher l'URL a l'utilisateur, et signaler les pages ajoutees ou supprimees.

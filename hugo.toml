@@ -1,4 +1,4 @@
-baseURL = "https://analytics-ds.github.io/compta-clair/"
+baseURL = "https://les-cles-du-dirigeant.fr/"
 title = "Les Clés du Dirigeant"
 theme = "les-cles-du-dirigeant"
 
@@ -72,7 +72,11 @@ enableRobotsTXT = false
   weight = 4
 
 [params]
-  # A REMETTRE A false DES QUE LE NOM DE DOMAINE DEFINITIF EST EN PLACE.
+  # A REMETTRE A false DES QUE LE DNS DE les-cles-du-dirigeant.fr POINTE SUR GITHUB PAGES
+  # ET QUE LE CERTIFICAT HTTPS EST DELIVRE. Le baseURL est deja sur le domaine, mais tant que
+  # le DNS n'est pas pose le site n'est servi que sur l'URL github.io, et on ne veut pas la
+  # faire indexer.
+  # Ancienne consigne, conservee pour le contexte :
   # Tant que le site vit sur analytics-ds.github.io, on ne veut pas le faire indexer : sinon
   # il faudra gerer une migration d'URL et du contenu duplique au moment du changement de
   # domaine. Pilote la balise <meta name="robots"> de partials/seo-head.html.

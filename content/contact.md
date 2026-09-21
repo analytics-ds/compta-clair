@@ -7,6 +7,6 @@ description: "Contactez la rédaction des Clés du Dirigeant par e-mail."
 
 Pour toute question, suggestion ou signalement d'erreur sur un article, contactez la rédaction par e-mail à l'adresse suivante :
 
-**redaction@compta-clair.fr**
+**redaction@les-cles-du-dirigeant.fr**
 
 Nous répondons aux messages sous quelques jours ouvrés. Aucun formulaire n'est utilisé sur ce site afin de limiter la collecte de données personnelles.

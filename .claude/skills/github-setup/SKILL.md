@@ -7,7 +7,7 @@ user_invocable: true
 
 > **DEJA FAIT SUR CE SITE — NE PAS REEXECUTER.**
 >
-> Le depot `analytics-ds/compta-clair` est en place, avec deux branches : `main` porte la
+> Le depot `analytics-ds/les-cles-du-dirigeant` est en place, avec deux branches : `main` porte la
 > source, `gh-pages` porte le site construit et c'est elle que GitHub Pages sert.
 >
 > **Il n'y a volontairement pas de GitHub Actions ici.** La publication passe par

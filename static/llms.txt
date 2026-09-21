@@ -26,5 +26,5 @@ Voir /blog/ pour la liste à jour des articles.
 
 - Générateur : Hugo
 - Hébergement : GitHub Pages
-- Sitemap : https://analytics-ds.github.io/compta-clair/sitemap.xml
-- RSS : https://analytics-ds.github.io/compta-clair/index.xml
+- Sitemap : https://les-cles-du-dirigeant.fr/sitemap.xml
+- RSS : https://les-cles-du-dirigeant.fr/index.xml

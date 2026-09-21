@@ -4,7 +4,7 @@ Trace tous les articles publiés, classés par semaine. Limite : 4 articles/sema
 
 ## 2026-09-21 — La source est sur GitHub, le depot a deux branches
 
-Jusqu'au 2026-09-21, le depot `analytics-ds/compta-clair` ne contenait que le site construit,
+Jusqu'au 2026-09-21, le depot `analytics-ds/les-cles-du-dirigeant` ne contenait que le site construit,
 et la source ne vivait que sur le Drive, sans historique. Un collaborateur ne pouvait rien
 produire a partir de GitHub.
 
@@ -52,10 +52,28 @@ l'adresse e-mail de `content/contact.md` et `content/en/contact.md` qui est enco
 nom de domaine, `static/CNAME`, le renommage du depot, et la pose du domaine custom par l'API
 Pages avec le compte `analytics-ds` (le fichier CNAME seul ne suffit pas en deploiement Actions).
 
+## 2026-09-21 — Bascule sur le domaine les-cles-du-dirigeant.fr
+
+- `baseURL`, `static/robots.txt`, `static/llms.txt` et les adresses e-mail des pages contact FR
+  et EN sont passes sur `https://les-cles-du-dirigeant.fr/`. `static/CNAME` pose, sans saut de
+  ligne final, pour que le domaine custom survive au rsync du deploiement.
+- **`noindex` reste a `true`** tant que le DNS ne pointe pas sur GitHub Pages et que le
+  certificat n'est pas delivre. Sinon c'est l'URL github.io qui se ferait indexer, et il faudrait
+  gerer une migration. Le passage a `false` est le dernier geste, apres verification par `dig`.
+- **La recherche du site etait cassee en ligne** : `deploy-pages.sh` ne generait pas l'index
+  Pagefind, et son `rsync --delete` effacait a chaque publication le dossier `pagefind/` de
+  `gh-pages`. Verifie, `pagefind/pagefind-ui.js` repondait 404. Une etape `npx pagefind` est
+  ajoutee au script, avant la synchro. Statut, **resolu**.
+- **`deploy-pages.sh` basculait `.deploy` sur `gh-pages` apres le rsync**, donc il synchronisait
+  le site construit par-dessus la source de `main` avant de changer de branche. Le checkout et
+  un `reset --hard origin/gh-pages` passent desormais avant la synchro. Statut, **resolu**.
+- L'adresse `redaction@les-cles-du-dirigeant.fr` est affichee sur les pages contact. **La boite
+  n'existe pas encore**, elle est a creer chez le registrar ou le fournisseur de messagerie.
+
 ## A REPRENDRE — remettre le site en index (bloquant pour le SEO)
 
 **Depuis le 2026-09-18, tout le site est en `noindex, nofollow`.** C'est volontaire : il vit sur
-`https://analytics-ds.github.io/compta-clair/`, une URL provisoire. Le laisser s'indexer la
+`https://les-cles-du-dirigeant.fr/`, une URL provisoire. Le laisser s'indexer la
 obligerait, au moment du passage sur le vrai domaine, a gerer une migration d'URL et du contenu
 duplique sur un site qui n'a aucune autorite a depenser pour ca.
 

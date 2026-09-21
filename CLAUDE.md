@@ -87,7 +87,7 @@ Ce repo ne contient pas de site. Il contient les **instructions et templates** p
 - **Nom du site** : Les Clés du Dirigeant — **PROVISOIRE**, à valider par Augustin (voir "Points ouverts" du cahier des charges, sur le Drive). À changer partout où il apparaît : `hugo.toml` (`title`, descriptions), `content/{_index.md,en/_index.md}`, `content/{qui-sommes-nous,charte-editoriale,contact,mentions-legales}.md` + équivalents EN, `themes/les-cles-du-dirigeant/layouts/_default/home.html` (H1 hero), `static/llms.txt`, `static/robots.txt`.
 - **Description (FR)** : Les Clés du Dirigeant explique la comptabilité, la fiscalité et la création d'entreprise en clair : guides pratiques, sourcés, à jour, pour dirigeants de TPE, indépendants et particuliers.
 - **Description (EN)** : Les Clés du Dirigeant explains French accounting, taxation and business creation in plain language: practical, sourced, up-to-date guides for small business owners, freelancers and individuals.
-- **URL** : `https://analytics-ds.github.io/compta-clair/` (GitHub Pages, compte `analytics-ds`, repo `compta-clair`, construit par GitHub Actions a chaque push). `baseURL` de `hugo.toml` à remplacer le jour où un vrai domaine est choisi.
+- **URL** : `https://les-cles-du-dirigeant.fr/` (GitHub Pages, compte `analytics-ds`, repo `les-cles-du-dirigeant`, construit par GitHub Actions a chaque push). `baseURL` de `hugo.toml` à remplacer le jour où un vrai domaine est choisi.
 - **Couleurs** : palette de reference (`--primary` #12433F vert sapin, `--accent` #9FE3D0 menthe, `--background` blanc, `--text` #0D1D2F bleu nuit). Voir `themes/les-cles-du-dirigeant/assets/css/main.css`.
 - **Polices** : Plus Jakarta Sans (titres), Source Serif 4 (corps), Inter (UI/tableaux).
 - **Langue principale** : fr (version EN en sous-dossier `/en/` active, `defaultContentLanguageInSubdir = false`).
@@ -111,8 +111,8 @@ Cette limite sert a eviter la publication en masse et a maintenir un rythme de p
 
 ## Mise en ligne (specifique a ce site)
 
-Le site est en ligne sur **https://analytics-ds.github.io/compta-clair/** (compte GitHub
-`analytics-ds`, repo `compta-clair`).
+Le site est en ligne sur **https://les-cles-du-dirigeant.fr/** (compte GitHub
+`analytics-ds`, repo `les-cles-du-dirigeant`).
 
 **Le depot a deux branches, ne pas les confondre :**
 
