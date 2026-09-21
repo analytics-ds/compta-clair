@@ -2,6 +2,23 @@
 
 Trace tous les articles publiés, classés par semaine. Limite : 4 articles/semaine/blog. Mis à jour automatiquement par `/create-article-geo`.
 
+## 2026-09-21 — La source est sur GitHub, le deploiement passe par Actions
+
+Jusqu'au 2026-09-21, le depot `analytics-ds/compta-clair` ne contenait que le site construit,
+et la source ne vivait que sur le Drive, sans historique. Un collaborateur ne pouvait rien
+produire a partir de GitHub.
+
+- La source complete est desormais poussee sur `main`, comme le reste du parc.
+- GitHub Pages est passe en mode **GitHub Actions** : `.github/workflows/hugo.yml` construit
+  (Hugo 0.166.0 + Pagefind) et publie a chaque push. **Ne plus lancer `deploy-pages.sh` par
+  reflexe**, il ne sert plus qu'en secours si Actions est indisponible.
+- Le theme a ete renomme `pbn-expertise-comptable` vers `compta-clair` : son ancien nom
+  partait dans `hugo.toml`, donc sur un depot public.
+- Restent hors depot (`.gitignore`) : `CAHIER-DES-CHARGES.md` et `.claude/leak-terms.txt`.
+  Ils nomment le client et les termes interdits. Ne jamais les committer.
+- Le Drive et GitHub portent maintenant le meme contenu. Les faire diverger est le principal
+  risque de cette organisation : commiter et pousser apres chaque session de production.
+
 ## A REPRENDRE — remettre le site en index (bloquant pour le SEO)
 
 **Depuis le 2026-09-18, tout le site est en `noindex, nofollow`.** C'est volontaire : il vit sur
