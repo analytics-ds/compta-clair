@@ -1,4 +1,7 @@
-baseURL = "https://les-cles-du-dirigeant.fr/"
+# TEMPORAIRE (2026-09-21) : le baseURL est repasse sur l'URL de preview GitHub Pages pour
+# garder un lien consultable tant que le DNS de les-cles-du-dirigeant.fr n'est pas pose.
+# A REMETTRE sur "https://les-cles-du-dirigeant.fr/" avec static/CNAME le jour de la bascule.
+baseURL = "https://analytics-ds.github.io/les-cles-du-dirigeant/"
 title = "Les Clés du Dirigeant"
 theme = "les-cles-du-dirigeant"
 
