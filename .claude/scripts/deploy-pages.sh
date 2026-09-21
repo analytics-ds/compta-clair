@@ -2,9 +2,14 @@
 # deploy-pages.sh
 # Publie le site sur GitHub Pages : https://analytics-ds.github.io/compta-clair/
 #
-# Deploiement manuel de SECOURS. En temps normal le site est construit et publie par
-# .github/workflows/hugo.yml a chaque push sur main ; ce script ne sert que si Actions est
-# indisponible. Il pousse le site deja construit dans le clone `.deploy/`.
+# C'est LE moyen de publier ce site : il n'y a pas de build automatique.
+#
+# Le depot a deux branches :
+#   main      = la source Hugo (content, themes, data...), ce que recupere un collaborateur
+#   gh-pages  = le site construit, la seule branche servie par GitHub Pages
+#
+# Ce script construit le site et pousse le resultat sur gh-pages via le clone `.deploy/`.
+# La source, elle, se commite a la main sur main.
 #
 # Chaine : build Hugo -> synchro dans .deploy/ -> controle de fuite -> commit -> push.
 #
@@ -58,13 +63,14 @@ fi
 
 echo "[4/4] Commit et push"
 cd "$DEPLOY"
+git checkout -q gh-pages 2>/dev/null || git checkout -q -b gh-pages origin/gh-pages
 if git diff --quiet && git diff --cached --quiet && [ -z "$(git status --porcelain)" ]; then
     echo "Rien a publier, le site en ligne est deja a jour."
     exit 0
 fi
 git add -A
 git commit -q -m "$MESSAGE"
-git push -q origin main
+git push -q origin gh-pages
 
 echo
 echo "Publie : https://analytics-ds.github.io/compta-clair/"

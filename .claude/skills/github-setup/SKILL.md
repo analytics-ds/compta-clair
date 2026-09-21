@@ -7,10 +7,13 @@ user_invocable: true
 
 > **DEJA FAIT SUR CE SITE — NE PAS REEXECUTER.**
 >
-> Le depot `analytics-ds/compta-clair` est en place et contient la source. Depuis le
-> 2026-09-21, GitHub Pages est en mode **GitHub Actions** : `.github/workflows/hugo.yml`
-> construit et publie le site a chaque push sur `main`. Il n'y a plus de deploiement manuel
-> a lancer.
+> Le depot `analytics-ds/compta-clair` est en place, avec deux branches : `main` porte la
+> source, `gh-pages` porte le site construit et c'est elle que GitHub Pages sert.
+>
+> **Il n'y a volontairement pas de GitHub Actions ici.** La publication passe par
+> `.claude/scripts/deploy-pages.sh` (voir `/github-deploy`), la source se commite a la main
+> sur `main`. Les etapes ci-dessous mettraient en place un build automatique dont ce site
+> n'a pas besoin.
 >
 > Seuls le cahier des charges et la liste de termes du controle de fuite restent hors depot
 > (`.gitignore`). Ils vivent sur le Drive, aupres du dossier client.

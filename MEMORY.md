@@ -2,22 +2,22 @@
 
 Trace tous les articles publiés, classés par semaine. Limite : 4 articles/semaine/blog. Mis à jour automatiquement par `/create-article-geo`.
 
-## 2026-09-21 — La source est sur GitHub, le deploiement passe par Actions
+## 2026-09-21 — La source est sur GitHub, le depot a deux branches
 
 Jusqu'au 2026-09-21, le depot `analytics-ds/compta-clair` ne contenait que le site construit,
 et la source ne vivait que sur le Drive, sans historique. Un collaborateur ne pouvait rien
 produire a partir de GitHub.
 
-- La source complete est desormais poussee sur `main`, comme le reste du parc.
-- GitHub Pages est passe en mode **GitHub Actions** : `.github/workflows/hugo.yml` construit
-  (Hugo 0.166.0 + Pagefind) et publie a chaque push. **Ne plus lancer `deploy-pages.sh` par
-  reflexe**, il ne sert plus qu'en secours si Actions est indisponible.
+- La source complete est desormais sur la branche **`main`**.
+- Le site construit vit sur la branche **`gh-pages`**, seule branche servie par GitHub Pages.
+- **Pas de GitHub Actions sur ce site**, choix assume. Publier = `deploy-pages.sh`, qui
+  construit et pousse sur `gh-pages`. La source se commite separement sur `main`.
 - Le theme a ete renomme vers `compta-clair` : son ancien nom etait un terme interne et
   partait dans `hugo.toml`, donc sur un depot public.
 - Restent hors depot (`.gitignore`) : `CAHIER-DES-CHARGES.md` et `.claude/leak-terms.txt`.
-  Ils nomment le client et les termes interdits. Ne jamais les committer.
-- Le Drive et GitHub portent maintenant le meme contenu. Les faire diverger est le principal
-  risque de cette organisation : commiter et pousser apres chaque session de production.
+  Ne jamais les committer.
+- Deux gestes au lieu d'un : oublier de pousser `main` fait diverger le depot du dossier de
+  travail. C'est le principal risque de cette organisation.
 
 ## A REPRENDRE — remettre le site en index (bloquant pour le SEO)
 

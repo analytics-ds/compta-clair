@@ -114,24 +114,38 @@ Cette limite sert a eviter la publication en masse et a maintenir un rythme de p
 Le site est en ligne sur **https://analytics-ds.github.io/compta-clair/** (compte GitHub
 `analytics-ds`, repo `compta-clair`).
 
-**Le deploiement est automatique.** La source vit dans ce depot ; a chaque push sur `main`,
-le workflow `.github/workflows/hugo.yml` construit le site avec Hugo, genere l'index de
-recherche Pagefind et publie sur GitHub Pages. Il n'y a rien a lancer a la main.
+**Le depot a deux branches, ne pas les confondre :**
+
+| Branche | Contenu | Role |
+|---|---|---|
+| `main` | la source Hugo (content, themes, data, .claude...) | ce que recupere un collaborateur |
+| `gh-pages` | le site construit | la seule branche servie par GitHub Pages |
+
+**Il n'y a pas de build automatique** : pas de GitHub Actions sur ce site. Publier se fait en
+deux gestes distincts.
+
+1. Mettre le site en ligne (construit + pousse sur `gh-pages`) :
 
 ```bash
-git add -A && git commit -m "message" && git push
+bash .claude/scripts/deploy-pages.sh "message de commit"
 ```
 
-Suivre le build : `gh run watch` ou l'onglet Actions du depot.
+2. Partager la source (commit sur `main`, depuis un clone du depot) :
+
+```bash
+git add -A && git commit -m "message" && git push origin main
+```
+
+Oublier le second geste fait diverger le depot du dossier de travail : c'est le principal
+risque de cette organisation.
+
+Le script refuse de publier si un terme interne apparait dans un fichier a mettre en ligne
+(liste dans `.claude/leak-terms.txt`, hors depot) — corriger alors **a la source**, jamais dans
+`.deploy/`. Detail du flux et cas d'erreur : skill `/github-deploy`.
 
 **Documents qui ne partent jamais sur GitHub** : le cahier des charges et la liste de termes
 du controle de fuite sont exclus par `.gitignore` et vivent sur le Drive, aupres du dossier
 client. Les recuperer la-bas avant toute session de production.
-
-Le script `.claude/scripts/deploy-pages.sh` reste disponible en secours pour un deploiement
-manuel du site construit. Il refuse de publier si un terme interne apparait dans un fichier a
-mettre en ligne (liste dans `.claude/leak-terms.txt`, hors depot) — corriger alors **a la
-source**, jamais dans `.deploy/`. Detail du flux : skill `/github-deploy`.
 
 ## Banque d'images (specifique a ce site)
 
