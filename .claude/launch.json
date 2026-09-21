@@ -2,7 +2,7 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "compta-clair-hugo",
+      "name": "les-cles-du-dirigeant-hugo",
       "runtimeExecutable": "hugo",
       "runtimeArgs": ["server", "--port", "1313"],
       "port": 1313

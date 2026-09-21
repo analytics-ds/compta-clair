@@ -1,5 +1,5 @@
 /* ========================================
-   CSS — Compta Clair
+   CSS — Les Clés du Dirigeant
    ======================================== */
 
 :root {
@@ -181,14 +181,23 @@ mark.highlight {
 }
 
 .site-logo {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--primary);
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
 }
 
-.site-logo:hover {
-    color: var(--primary-dark);
+.site-logo img {
+    height: 42px;
+    width: auto;
+    display: block;
+}
+
+.site-logo:hover img {
+    opacity: .82;
+}
+
+@media (max-width: 900px) {
+    .site-logo img { height: 34px; }
 }
 
 .site-nav {

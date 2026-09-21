@@ -21,7 +21,7 @@ CANDIDATES_FILE = TMP_DIR / "candidates.json"
 SHEET_FILE = TMP_DIR / "planche-contact.html"
 
 BANK_HEADER = """\
-# Banque d'images de Compta Clair — index lu par Claude (/create-article-geo) et par Hugo.
+# Banque d'images des Clés du Dirigeant — index lu par Claude (/create-article-geo) et par Hugo.
 #
 # Genere par .claude/scripts/image-bank/build-bank.py, a partir d'une selection validee
 # a la main sur la planche-contact. Ne pas ajouter d'entree a la main sans copier le

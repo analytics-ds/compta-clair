@@ -1,4 +1,4 @@
-# Suivi des publications — Compta Clair
+# Suivi des publications — Les Clés du Dirigeant
 
 Trace tous les articles publiés, classés par semaine. Limite : 4 articles/semaine/blog. Mis à jour automatiquement par `/create-article-geo`.
 
@@ -12,12 +12,45 @@ produire a partir de GitHub.
 - Le site construit vit sur la branche **`gh-pages`**, seule branche servie par GitHub Pages.
 - **Pas de GitHub Actions sur ce site**, choix assume. Publier = `deploy-pages.sh`, qui
   construit et pousse sur `gh-pages`. La source se commite separement sur `main`.
-- Le theme a ete renomme vers `compta-clair` : son ancien nom etait un terme interne et
+- Le theme a ete renomme (voir l'entree suivante) : son ancien nom etait un terme interne et
   partait dans `hugo.toml`, donc sur un depot public.
 - Restent hors depot (`.gitignore`) : `CAHIER-DES-CHARGES.md` et `.claude/leak-terms.txt`.
   Ne jamais les committer.
 - Deux gestes au lieu d'un : oublier de pousser `main` fait diverger le depot du dossier de
   travail. C'est le principal risque de cette organisation.
+
+## 2026-09-21 — Le media s'appelle Les Cles du Dirigeant, logo pose, 3 bugs corriges
+
+Le site avait ete developpe sous un nom provisoire. Renommage complet en **Les Clés du Dirigeant**,
+identite visuelle posee, et trois bugs corriges au passage.
+
+- **Nom.** Remplace partout dans `content/`, `data/`, `static/llms.txt`, `hugo.toml`, le theme et
+  la doc. Les tournures contractees sont traitees a la main, « de Compta Clair » devient
+  « des Clés du Dirigeant », jamais « de Les Clés du Dirigeant ». Le theme est renomme
+  `themes/les-cles-du-dirigeant`.
+- **Logo.** Le fichier fourni etait un PNG encapsule dans un SVG (1,1 Mo, fond blanc opaque).
+  Vectorise par couche de couleur, 21 Ko. `static/images/logo.svg` est le lockup horizontal du
+  header, `logo-dark.svg` sa version pour fond sombre, `logo-vertical.svg` sert au JSON-LD.
+  Favicon simplifie a la cle seule, le lockup complet etant illisible sous 32 px. Palette du
+  logo, marine `#032247` et or `#B98F23`.
+- **Toutes les pages EN sortaient avec le chrome francais.** Le test de langue des templates,
+  `strings.HasPrefix .RelPermalink "/en/"`, ne peut pas marcher tant que le site vit sous
+  `/compta-clair/` : le permalien commence par le chemin du site. Verifie en ligne, la page EN
+  affichait « Navigation principale » et FR comme langue courante. Le test retire desormais le
+  chemin de base avant la comparaison, 18 occurrences corrigees dans le theme. Statut, **resolu**.
+- **hreflang et selecteur de langue.** La version EN etait annoncee `hreflang="fr"`, chaque page
+  portait deux alternates `fr`, `x-default` pointait sur la page courante au lieu du FR, et le
+  lien EN du header visait la racine du domaine au lieu du site. Meme cause pour les trois, plus
+  un `absURL` sur un chemin a slash initial qui perd le prefixe du site. Statut, **resolu**.
+- **og:image et logo du JSON-LD.** `default_og_image` et `logo` etaient ecrits avec un slash
+  initial, donc `absURL` les sortait sans le prefixe du site, et `static/images/og-default.jpg`
+  n'existait meme pas. Chemins passes en relatif et image de partage creee. Statut, **resolu**.
+
+**Reste a faire, en un seul passage, le jour ou le domaine definitif est connu** (voir la section
+suivante) : `baseURL`, `noindex = false`, les URLs absolues de `robots.txt` et `llms.txt`,
+l'adresse e-mail de `content/contact.md` et `content/en/contact.md` qui est encore sur l'ancien
+nom de domaine, `static/CNAME`, le renommage du depot, et la pose du domaine custom par l'API
+Pages avec le compte `analytics-ds` (le fichier CNAME seul ne suffit pas en deploiement Actions).
 
 ## A REPRENDRE — remettre le site en index (bloquant pour le SEO)
 

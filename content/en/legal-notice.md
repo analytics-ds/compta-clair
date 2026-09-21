@@ -2,7 +2,7 @@
 title: "Legal notice"
 layout: "static"
 translationKey: "legal-notice"
-description: "Legal notice for Compta Clair: site publisher and host."
+description: "Legal notice for Les Clés du Dirigeant: site publisher and host."
 ---
 
 ## Site publisher
@@ -15,7 +15,7 @@ description: "Legal notice for Compta Clair: site publisher and host."
 
 ## Intellectual property
 
-All content published on this site (text, illustrations) belongs to Compta Clair, unless stated otherwise. Images used come from royalty-free sources and are credited at the bottom of each article.
+All content published on this site (text, illustrations) belongs to Les Clés du Dirigeant, unless stated otherwise. Images used come from royalty-free sources and are credited at the bottom of each article.
 
 ## Personal data
 

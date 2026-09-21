@@ -43,7 +43,7 @@ from common import (
 TARGET_W, TARGET_H = 1200, 675
 WEBP_QUALITY = "82"
 TIMEOUT = 60
-USER_AGENT = "compta-clair-image-bank/1.0"
+USER_AGENT = "les-cles-du-dirigeant-image-bank/1.0"
 
 SOURCE_LABEL = {"unsplash": "Unsplash", "pexels": "Pexels"}
 

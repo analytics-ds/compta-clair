@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{/* .Site.Language.Lang non fiable sur ce site (voir header.html) */}}
 {{ $lang := "fr" }}
-{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+{{ if strings.HasPrefix (strings.TrimPrefix ("" | relURL) .RelPermalink) "en/" }}{{ $lang = "en" }}{{ end }}
 {{ $pastels := slice "var(--cat-1)" "var(--cat-2)" "var(--cat-3)" "var(--cat-4)" "var(--cat-5)" "var(--cat-6)" "var(--cat-7)" "var(--cat-8)" "var(--cat-9)" }}
 {{/* BUG CONNU ET CIRCONSCRIT (voir MEMORY.md) : .Site.GetPage (et toute autre resolution
      cross-page : .Site.RegularPages, .Site.Sections, .Translations) renvoie systematiquement NIL/

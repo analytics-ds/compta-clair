@@ -2,7 +2,7 @@
 title: "Contact"
 layout: "static"
 translationKey: "contact"
-description: "Contactez la rédaction de Compta Clair par e-mail."
+description: "Contactez la rédaction des Clés du Dirigeant par e-mail."
 ---
 
 Pour toute question, suggestion ou signalement d'erreur sur un article, contactez la rédaction par e-mail à l'adresse suivante :

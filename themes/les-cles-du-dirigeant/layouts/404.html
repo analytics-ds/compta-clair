@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{ $lang := "fr" }}
-{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+{{ if strings.HasPrefix (strings.TrimPrefix ("" | relURL) .RelPermalink) "en/" }}{{ $lang = "en" }}{{ end }}
 
 <section class="error-page">
     <div class="container">

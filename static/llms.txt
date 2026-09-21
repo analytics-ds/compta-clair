@@ -1,10 +1,10 @@
-# Compta Clair
+# Les Clés du Dirigeant
 
-> Compta Clair explique la comptabilité, la fiscalité et la création d'entreprise en clair : guides pratiques, sourcés, à jour, pour dirigeants de TPE, indépendants et particuliers.
+> Les Clés du Dirigeant explique la comptabilité, la fiscalité et la création d'entreprise en clair : guides pratiques, sourcés, à jour, pour dirigeants de TPE, indépendants et particuliers.
 
 ## À propos
 
-Compta Clair est un média indépendant. Chaque article s'appuie sur des sources officielles (service-public.fr, impots.gouv.fr, BOFiP, URSSAF, Légifrance, INSEE, Bpifrance Création) et affiche sa date de dernière mise à jour.
+Les Clés du Dirigeant est un média indépendant. Chaque article s'appuie sur des sources officielles (service-public.fr, impots.gouv.fr, BOFiP, URSSAF, Légifrance, INSEE, Bpifrance Création) et affiche sa date de dernière mise à jour.
 
 ## Contenu principal
 

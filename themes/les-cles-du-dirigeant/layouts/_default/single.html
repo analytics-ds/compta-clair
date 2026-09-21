@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{/* .Site.Language.Lang non fiable sur ce site (voir header.html) */}}
 {{ $lang := "fr" }}
-{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+{{ if strings.HasPrefix (strings.TrimPrefix ("" | relURL) .RelPermalink) "en/" }}{{ $lang = "en" }}{{ end }}
 {{ $authorsPage := cond (eq $lang "en") "authors/" "auteurs/" }}
 <article class="single-article">
     <div class="container">
@@ -170,7 +170,7 @@
                 {{ $relatedAll := .Site.RegularPages.Related . }}
                 {{ $related := slice }}
                 {{ range $relatedAll }}
-                    {{ $isEN := strings.HasPrefix .RelPermalink "/en/" }}
+                    {{ $isEN := strings.HasPrefix (strings.TrimPrefix ("" | relURL) .RelPermalink) "en/" }}
                     {{ if or (and (eq $lang "en") $isEN) (and (ne $lang "en") (not $isEN)) }}
                         {{ $related = $related | append . }}
                     {{ end }}

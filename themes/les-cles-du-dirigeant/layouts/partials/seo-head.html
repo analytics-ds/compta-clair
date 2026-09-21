@@ -1,7 +1,7 @@
 {{/* .Site.Language.Lang / .Site.LanguageCode ne sont pas fiables dans ce partial sur ce site
      (voir header.html) : la langue est deduite du permalien reel. */}}
 {{ $pageLang := "fr" }}
-{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $pageLang = "en" }}{{ end }}
+{{ if strings.HasPrefix (strings.TrimPrefix ("" | relURL) .RelPermalink) "en/" }}{{ $pageLang = "en" }}{{ end }}
 
 <!-- Indexation : noindex tant que le vrai nom de domaine n'est pas en place (params.noindex
      dans hugo.toml). Le crawl reste AUTORISE dans robots.txt, sinon les moteurs ne liraient
@@ -14,12 +14,20 @@
 <link rel="canonical" href="{{ .Permalink }}">
 
 <!-- Hreflang (si multilingual est active dans hugo.toml) -->
+{{/* .Lang renvoie "fr" meme sur une page EN quand il est lu dans un partial (voir MEMORY.md) :
+     la langue se deduit du prefixe du permalien. Sans ca, la version EN etait annoncee en
+     hreflang="fr" et chaque page portait deux alternates "fr" (constate le 2026-09-21).
+     x-default pointe toujours vers la version FR, langue par defaut du site. */}}
 {{ if .IsTranslated }}
+{{ $selfLang := cond (strings.HasPrefix (strings.TrimPrefix ("" | relURL) .RelPermalink) "en/") "en" "fr" }}
+{{ $frURL := cond (eq $selfLang "fr") .Permalink "" }}
 {{ range .Translations }}
-<link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
+{{ $tLang := cond (strings.HasPrefix (strings.TrimPrefix ("" | relURL) .RelPermalink) "en/") "en" "fr" }}
+<link rel="alternate" hreflang="{{ $tLang }}" href="{{ .Permalink }}">
+{{ if eq $tLang "fr" }}{{ $frURL = .Permalink }}{{ end }}
 {{ end }}
-<link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
-<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+<link rel="alternate" hreflang="{{ $selfLang }}" href="{{ .Permalink }}">
+{{ with $frURL }}<link rel="alternate" hreflang="x-default" href="{{ . }}">{{ end }}
 {{ end }}
 
 <!-- Author -->
@@ -94,6 +102,7 @@
 
 <!-- Favicon -->
 <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
 
 <!-- JSON-LD Schema.org : Organization (toutes les pages, avec @id) -->
 <script type="application/ld+json">

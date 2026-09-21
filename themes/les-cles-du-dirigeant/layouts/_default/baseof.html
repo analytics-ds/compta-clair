@@ -1,6 +1,6 @@
 {{/* .Site.Language.Lang non fiable sur ce site (voir header.html) */}}
 {{ $lang := "fr" }}
-{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+{{ if strings.HasPrefix (strings.TrimPrefix ("" | relURL) .RelPermalink) "en/" }}{{ $lang = "en" }}{{ end }}
 <!DOCTYPE html>
 <html lang="{{ $lang }}">
 <head>

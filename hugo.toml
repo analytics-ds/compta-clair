@@ -1,6 +1,6 @@
 baseURL = "https://analytics-ds.github.io/compta-clair/"
-title = "Compta Clair"
-theme = "compta-clair"
+title = "Les Clés du Dirigeant"
+theme = "les-cles-du-dirigeant"
 
 defaultContentLanguage = "fr"
 defaultContentLanguageInSubdir = false
@@ -13,17 +13,17 @@ enableRobotsTXT = false
     languageCode = "fr-FR"
     languageName = "Français"
     weight = 1
-    title = "Compta Clair"
+    title = "Les Clés du Dirigeant"
     [languages.fr.params]
-      description = "Compta Clair explique la comptabilité, la fiscalité et la création d'entreprise en clair : guides pratiques, sourcés, à jour, pour dirigeants de TPE, indépendants et particuliers."
+      description = "Les Clés du Dirigeant explique la comptabilité, la fiscalité et la création d'entreprise en clair : guides pratiques, sourcés, à jour, pour dirigeants de TPE, indépendants et particuliers."
 
   [languages.en]
     languageCode = "en-US"
     languageName = "English"
     weight = 2
-    title = "Compta Clair"
+    title = "Les Clés du Dirigeant"
     [languages.en.params]
-      description = "Compta Clair explains French accounting, taxation and business creation in plain language: practical, sourced, up-to-date guides for small business owners, freelancers and individuals."
+      description = "Les Clés du Dirigeant explains French accounting, taxation and business creation in plain language: practical, sourced, up-to-date guides for small business owners, freelancers and individuals."
 
 # "categories" n'est PAS declaree comme taxonomie : Hugo (0.139 a 0.166 testes) fusionne de facon
 # non deterministe la page de terme auto-generee et la page de contenu personnalisee
@@ -77,8 +77,8 @@ enableRobotsTXT = false
   # il faudra gerer une migration d'URL et du contenu duplique au moment du changement de
   # domaine. Pilote la balise <meta name="robots"> de partials/seo-head.html.
   noindex = true
-  default_og_image = "/images/og-default.jpg"
-  logo = "/favicon.svg"
+  default_og_image = "images/og-default.jpg"
+  logo = "images/logo-vertical.svg"
   founding_year = "2026"
   expertise = ["Comptabilité", "Fiscalité", "Création d'entreprise", "Paie et droit social"]
 

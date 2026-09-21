@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{/* .Site.Language.Lang non fiable sur ce site (voir header.html) */}}
 {{ $lang := "fr" }}
-{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+{{ if strings.HasPrefix (strings.TrimPrefix ("" | relURL) .RelPermalink) "en/" }}{{ $lang = "en" }}{{ end }}
 
 <div class="container" style="padding-top: var(--space-md);">
     <nav class="breadcrumb" aria-label="{{ if eq $lang "en" }}Breadcrumb{{ else }}Fil d'Ariane{{ end }}">

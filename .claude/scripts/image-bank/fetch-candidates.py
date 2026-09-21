@@ -40,7 +40,7 @@ from common import (
 
 TIMEOUT = 25
 # Pexels renvoie 403 sur le User-Agent par defaut d'urllib : on s'identifie explicitement.
-USER_AGENT = "compta-clair-image-bank/1.0"
+USER_AGENT = "les-cles-du-dirigeant-image-bank/1.0"
 
 
 def http_json(url: str, headers: dict[str, str]) -> dict:

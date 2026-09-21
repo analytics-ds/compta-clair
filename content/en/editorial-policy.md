@@ -2,7 +2,7 @@
 title: "Editorial policy"
 layout: "static"
 translationKey: "editorial-policy"
-description: "Sources used, review process, update frequency and correction policy at Compta Clair."
+description: "Sources used, review process, update frequency and correction policy at Les Clés du Dirigeant."
 ---
 
 ## Sources used

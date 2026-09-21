@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# /!\ PLUS UTILISE SUR CE SITE (Compta Clair) — conserve car il fait partie du template
+# /!\ PLUS UTILISE SUR CE SITE (Les Clés du Dirigeant) — conserve car il fait partie du template
 # de la factory. Les hero d'article viennent desormais de la banque d'images curee :
 # data/image-bank.yaml + .claude/scripts/image-bank/. Voir l'etape 1.5 de la skill
 # create-article-geo : si la banque n'a pas d'image libre, on s'arrete, on ne retombe

@@ -1,9 +1,12 @@
 {{/* .Site.Language.Lang renvoie parfois "fr" meme sur une page EN quand il est lu depuis un
      partial (bug constate, voir MEMORY.md) : la langue est donc deduite du permalien reel plutot
-     que de .Site.Language.Lang. .Site.Menus.main souffre du meme souci, le menu est donc reconstruit
+     que de .Site.Language.Lang. Le test retire d'abord le chemin de base du site
+     ("" | relURL) : tant que le site vit sous /compta-clair/, un permalien EN commence
+     par ce prefixe et jamais par "/en/", donc toutes les pages EN sortaient avec le
+     chrome francais (constate en ligne le 2026-09-21). .Site.Menus.main souffre du meme souci, le menu est donc reconstruit
      a la main a partir de data/categories.yaml plutot que lu depuis .Site.Menus. */}}
 {{ $lang := "fr" }}
-{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+{{ if strings.HasPrefix (strings.TrimPrefix ("" | relURL) .RelPermalink) "en/" }}{{ $lang = "en" }}{{ end }}
 
 {{/* Categories regroupees sous un menu deroulant "Entreprise" / "Business" : tout ce qui concerne
      la creation, le statut juridique et la gestion d'une societe. Les 4 autres categories restent
@@ -27,7 +30,7 @@
 <header class="site-header">
     <div class="header-container">
         <a href="{{ if eq $lang "en" }}{{ "/en/" | relURL }}{{ else }}{{ "/" | relURL }}{{ end }}" class="site-logo" aria-label="{{ .Site.Title }}">
-            {{ .Site.Title }}
+            <img src="{{ "images/logo.svg" | relURL }}" alt="{{ .Site.Title }}" width="248" height="64">
         </a>
 
         <nav class="site-nav" role="navigation" aria-label="{{ if eq $lang "en" }}Main navigation{{ else }}Navigation principale{{ end }}">
@@ -54,12 +57,17 @@
         </div>
 
         <!-- Language switcher -->
+        {{/* .Lang n'est pas fiable dans un partial (meme bug que .Site.Language.Lang, voir
+             MEMORY.md) : la langue d'une traduction se deduit du prefixe de son permalien.
+             Le repli utilise relURL SANS slash initial, sinon le chemin du site saute et on
+             pointe vers la racine du domaine (constate le 2026-09-21, lien EN casse). */}}
         {{ $otherLang := cond (eq $lang "en") "fr" "en" }}
         {{ $otherTarget := "" }}
         {{ range .Translations }}
-            {{ if eq .Lang $otherLang }}{{ $otherTarget = .Permalink }}{{ end }}
+            {{ $tLang := cond (strings.HasPrefix (strings.TrimPrefix ("" | relURL) .RelPermalink) "en/") "en" "fr" }}
+            {{ if eq $tLang $otherLang }}{{ $otherTarget = .Permalink }}{{ end }}
         {{ end }}
-        {{ if not $otherTarget }}{{ $otherTarget = cond (eq $otherLang "en") "/en/" "/" | absURL }}{{ end }}
+        {{ if not $otherTarget }}{{ $otherTarget = cond (eq $otherLang "en") ("en/" | relURL) ("" | relURL) }}{{ end }}
         <div class="lang-switcher" aria-label="Language switcher">
             {{ if eq $lang "fr" }}
             <span class="lang-current" aria-current="true">FR</span>

@@ -2,7 +2,7 @@
 title: "Mentions légales"
 layout: "static"
 translationKey: "legal-notice"
-description: "Mentions légales de Compta Clair : éditeur et hébergeur du site."
+description: "Mentions légales des Clés du Dirigeant : éditeur et hébergeur du site."
 ---
 
 ## Éditeur du site
@@ -15,7 +15,7 @@ description: "Mentions légales de Compta Clair : éditeur et hébergeur du site
 
 ## Propriété intellectuelle
 
-L'ensemble des contenus publiés sur ce site (textes, illustrations) est la propriété de Compta Clair, sauf mention contraire. Les images utilisées proviennent de sources libres de droit et sont créditées en fin d'article.
+L'ensemble des contenus publiés sur ce site (textes, illustrations) est la propriété des Clés du Dirigeant, sauf mention contraire. Les images utilisées proviennent de sources libres de droit et sont créditées en fin d'article.
 
 ## Données personnelles
 

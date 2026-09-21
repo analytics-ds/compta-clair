@@ -4,7 +4,7 @@
      quelle que soit la langue de la page : c'est la table $categoriesData, generee ici cote Hugo,
      qui traduit chaque cle vers le titre/URL/icone localises. */}}
 {{ $lang := "fr" }}
-{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+{{ if strings.HasPrefix (strings.TrimPrefix ("" | relURL) .RelPermalink) "en/" }}{{ $lang = "en" }}{{ end }}
 
 {{ $categoriesData := dict }}
 {{ range .Site.Data.categories }}

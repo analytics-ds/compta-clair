@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{/* .Site.Language.Lang non fiable sur ce site (voir header.html) */}}
 {{ $lang := "fr" }}
-{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+{{ if strings.HasPrefix (strings.TrimPrefix ("" | relURL) .RelPermalink) "en/" }}{{ $lang = "en" }}{{ end }}
 {{/* .Site.RegularPages / .Site.GetPage / .Translations ne permettent pas de reconstituer de facon
      fiable la liste des articles EN depuis une page EN sur ce site (.Section/.Type valent "en" au
      lieu du vrai nom de section pour toute page EN — bug constate, voir MEMORY.md). Seule methode

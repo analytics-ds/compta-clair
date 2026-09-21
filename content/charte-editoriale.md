@@ -2,7 +2,7 @@
 title: "Charte éditoriale"
 layout: "static"
 translationKey: "editorial-policy"
-description: "Sources utilisées, processus de relecture, fréquence de mise à jour et politique de correction de Compta Clair."
+description: "Sources utilisées, processus de relecture, fréquence de mise à jour et politique de correction des Clés du Dirigeant."
 ---
 
 ## Sources utilisées

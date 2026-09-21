@@ -2,7 +2,7 @@
 title: "Contact"
 layout: "static"
 translationKey: "contact"
-description: "Contact the Compta Clair editorial team by email."
+description: "Contact the editorial team of Les Clés du Dirigeant by email."
 ---
 
 For any question, suggestion, or to report an error in an article, contact the editorial team by email:

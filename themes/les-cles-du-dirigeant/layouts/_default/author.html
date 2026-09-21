@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{/* .Site.Language.Lang non fiable sur ce site (voir header.html) */}}
 {{ $lang := "fr" }}
-{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+{{ if strings.HasPrefix (strings.TrimPrefix ("" | relURL) .RelPermalink) "en/" }}{{ $lang = "en" }}{{ end }}
 {{ $authorId := .Params.authorId }}
 {{ $a := index .Site.Data.authors $authorId }}
 {{/* .Site.RegularPages/.Site.GetPage("blog") sont peu fiables en langue non par defaut sur ce

@@ -1,15 +1,15 @@
 {{/* .Site.Language.Lang n'est pas fiable dans un partial sur ce site (voir header.html) */}}
 {{ $lang := "fr" }}
-{{ if strings.HasPrefix .RelPermalink "/en/" }}{{ $lang = "en" }}{{ end }}
+{{ if strings.HasPrefix (strings.TrimPrefix ("" | relURL) .RelPermalink) "en/" }}{{ $lang = "en" }}{{ end }}
 {{ $prefix := "" }}
 {{ if eq $lang "en" }}{{ $prefix = "/en" }}{{ end }}
 <footer class="site-footer">
     <div class="footer-container">
         <div class="footer-grid">
             <div class="footer-col">
-                <h4>Compta Clair</h4>
+                <h4>Les Clés du Dirigeant</h4>
                 {{/* .Site.Params.description n'est pas fiable dans un partial sur ce site (voir header.html) */}}
-                <p>{{ if eq $lang "en" }}Compta Clair explains French accounting, taxation and business creation in plain language: practical, sourced, up-to-date guides for small business owners, freelancers and individuals.{{ else }}Compta Clair explique la comptabilité, la fiscalité et la création d'entreprise en clair : guides pratiques, sourcés, à jour, pour dirigeants de TPE, indépendants et particuliers.{{ end }}</p>
+                <p>{{ if eq $lang "en" }}Les Clés du Dirigeant explains French accounting, taxation and business creation in plain language: practical, sourced, up-to-date guides for small business owners, freelancers and individuals.{{ else }}Les Clés du Dirigeant explique la comptabilité, la fiscalité et la création d'entreprise en clair : guides pratiques, sourcés, à jour, pour dirigeants de TPE, indépendants et particuliers.{{ end }}</p>
             </div>
             <div class="footer-col">
                 <h4>{{ if eq $lang "en" }}Topics{{ else }}Catégories{{ end }}</h4>
