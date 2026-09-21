@@ -12,7 +12,7 @@ produire a partir de GitHub.
 - GitHub Pages est passe en mode **GitHub Actions** : `.github/workflows/hugo.yml` construit
   (Hugo 0.166.0 + Pagefind) et publie a chaque push. **Ne plus lancer `deploy-pages.sh` par
   reflexe**, il ne sert plus qu'en secours si Actions est indisponible.
-- Le theme a ete renomme `pbn-expertise-comptable` vers `compta-clair` : son ancien nom
+- Le theme a ete renomme vers `compta-clair` : son ancien nom etait un terme interne et
   partait dans `hugo.toml`, donc sur un depot public.
 - Restent hors depot (`.gitignore`) : `CAHIER-DES-CHARGES.md` et `.claude/leak-terms.txt`.
   Ils nomment le client et les termes interdits. Ne jamais les committer.
